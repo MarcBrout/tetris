@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:43:44 2016 marc brout
-** Last update Thu Feb 25 19:27:43 2016 marc brout
+** Last update Thu Feb 25 20:53:51 2016 marc brout
 */
 
 int	my_strlen(const char *str)
@@ -64,5 +64,24 @@ char	*my_strcat(const char *str1, const char *str2)
   while (str2[j])
     res[i++] = str2[j++];
   res[i] = 0;
+  return (res);
+}
+
+char	*get_name(const char *str1, const char *str2)
+{
+  int	i;
+  int	j;
+  char	*res;
+
+  if (!str1 || !str2)
+    return (NULL);
+  j = my_strlen(str2);
+  i = my_strlen(str1) - j;
+  if (!(res = malloc(i + 1)))
+    return (NULL);
+  j = -1;
+  while (++j < i)
+    res[j] = str1[j];
+  res[j] = 0;
   return (res);
 }
