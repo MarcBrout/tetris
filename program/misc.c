@@ -5,10 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:43:44 2016 marc brout
-** Last update Thu Feb 25 20:53:51 2016 marc brout
+** Last update Mon Feb 29 18:30:49 2016 marc brout
 */
 
-int	my_strlen(const char *str)
+#include <stdlib.h>
+
+int	my_strlencst(const char *str)
 {
   int	i;
 
@@ -18,7 +20,7 @@ int	my_strlen(const char *str)
   return (i);
 }
 
-int	my_strcmp(const char *str1, const char *str2)
+int	my_strcmpcst(const char *str1, const char *str2)
 {
   int	i;
 
@@ -30,15 +32,15 @@ int	my_strcmp(const char *str1, const char *str2)
   return (str1[i] - str2[i]);
 }
 
-int	my_revstrncmp(const char *str1, const char *str2, int n)
+int	my_revstrncmpcst(const char *str1, const char *str2, int n)
 {
   int	i;
   int	j;
 
   if (!str1 || !str2 || !n)
     return (-1);
-  i = my_strlen(str1);
-  j = my_strlen(str2);
+  i = my_strlencst(str1);
+  j = my_strlencst(str2);
   while (i > 0 && j > 0 && str1[i] == str2[j])
     {
       i--;
@@ -47,7 +49,7 @@ int	my_revstrncmp(const char *str1, const char *str2, int n)
   return (str1[i] - str2[j]);
 }
 
-char	*my_strcat(const char *str1, const char *str2)
+char	*my_strcatcst(const char *str1, const char *str2)
 {
   int	i;
   int	j;
@@ -55,14 +57,14 @@ char	*my_strcat(const char *str1, const char *str2)
 
   if (!str1 || !str2)
     return (NULL);
-  if ((res = malloc(my_strlen(str1) + my_strlen(str2) + 1)) == NULL)
+  if ((res = malloc(my_strlencst(str1) + my_strlencst(str2) + 1)) == NULL)
     return (NULL);
-  i = 0;
-  j = 0;
-  while (str1[i])
-    res[i] = str1[i++];
-  while (str2[j])
-    res[i++] = str2[j++];
+  i = -1;
+  j = -1;
+  while (str1[++i])
+    res[i] = str1[i];
+  while (str2[++j])
+    res[i++] = str2[j];
   res[i] = 0;
   return (res);
 }
@@ -75,8 +77,8 @@ char	*get_name(const char *str1, const char *str2)
 
   if (!str1 || !str2)
     return (NULL);
-  j = my_strlen(str2);
-  i = my_strlen(str1) - j;
+  j = my_strlencst(str2);
+  i = my_strlencst(str1) - j;
   if (!(res = malloc(i + 1)))
     return (NULL);
   j = -1;

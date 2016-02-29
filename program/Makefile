@@ -5,14 +5,20 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Thu Feb 25 16:35:05 2016 marc brout
+## Last update Mon Feb 29 20:28:42 2016 marc brout
 ##
 
-SRCP		= program/
+SRCP		= ./
 
-SRC     	= $(SRCP)client.c \
-		$(SRCP)my_putnbr_to_str.c \
-		$(SRCP)my_getnbr.c
+SRC     	= $(SRCP)error.c \
+		$(SRCP)main.c \
+		$(SRCP)misc.c \
+		$(SRCP)get_next_line.c \
+		$(SRCP)tabs.c \
+		$(SRCP)debug.c \
+		$(SRCP)tetris_load_tetriminos.c \
+		$(SRCP)my_getnbr.c \
+		$(SRCP)free.c 
 
 OBJS    	= $(SRC:.c=.o)
 
@@ -22,9 +28,9 @@ CC      	= gcc -g
 
 CFLAGS  	=  -W -Wall -Werror
 
-HDFLAGS 	= -I./include/
+HDFLAGS 	= -I../include/
 
-LDFLAGS 	= 
+LDFLAGS 	= -L../lib/ -lmy
 
 RM      	= rm -f
 
@@ -33,7 +39,7 @@ RM      	= rm -f
 .c.o:
 	$(CC) -c $< -o $@ $(HDFLAGS) $(CFLAGS)
 
-$(CLIENT): $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 all: $(NAME)
