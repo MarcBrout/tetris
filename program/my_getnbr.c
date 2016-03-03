@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Oct 12 19:01:57 2015 marc brout
-** Last update Mon Feb 29 19:06:50 2016 marc brout
+** Last update Mon Feb 29 20:54:12 2016 marc brout
 */
 
 #include <stdio.h>
@@ -51,7 +51,6 @@ int		my_getnbrcst(const char *str)
   return (total * isneg);
 }
 
-
 double		my_getdouble(const char *str)
 {
   double	total;
@@ -85,7 +84,6 @@ int		my_getnbr_i(const char *str, int *i)
 
   if (!str || str[*i] == 0)
     return (0);
-  /* printf("teest\n"); */
   isneg = 1;
   total = 0;
   while ((str[*i] >= '0') && (str[*i] <= '9'))

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:27:16 2016 marc brout
-** Last update Mon Feb 29 20:48:50 2016 marc brout
+** Last update Mon Feb 29 20:52:46 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -22,7 +22,7 @@ t_tetrimino		*load_tetriminos(const char *folderpath,
 
   *nb_tminos = 0;
   if (!(dir = opendir(folderpath)))
-    return(my_puterror_null(FOLDER_MISSING));
+    return (my_puterror_null(FOLDER_MISSING));
   if (!(tminos = read_folder(dir, nb_tminos)))
     return (NULL);
   if (!*nb_tminos)
