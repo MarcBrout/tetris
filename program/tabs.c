@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Thu Mar  3 11:03:01 2016 marc brout
+** Last update Thu Mar  3 11:32:38 2016 marc brout
 */
 
 #include <stdio.h>
@@ -88,6 +88,7 @@ void			fill_tab(t_tetrimino *tm, int color, int fd)
     {
       if ((tmp = get_next_line(fd)))
 	{
+	  /* printf("%s\n", tmp); */
 	  if (fill_line(tmp, tm->tmino[i], tm->width, color))
 	    tm->working = 0;
 	}
