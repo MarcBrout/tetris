@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar  3 11:30:14 2016 marc brout
+** Last update Thu Mar  3 11:34:59 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -14,6 +14,7 @@
 # include <sys/types.h>
 # include <dirent.h>
 # include <stdlib.h>
+# include "disp.h"
 
 # define UNUSED __attribute__((__unused__))
 # define USAGE
@@ -36,6 +37,7 @@ typedef struct		s_tetrimino
 typedef struct		s_program
 {
   t_tetrimino		*tminos;
+  t_tet			tet;
   int			nb_tminos;
 }			t_program;
 
@@ -111,5 +113,40 @@ int	my_getnbr_i(const char *str, int *i);
 
 void	free_tab(int **tab, int height);
 void	free_list(t_tetrimino *root);
+
+/*
+** create_and_win.c
+*/
+
+int	max_wtetriminos(t_tetrimino *);
+int	max_htetriminos(t_tetrimino *);
+int	create_win(t_tet *, int, int);
+
+/*
+** tab_game.c
+*/
+
+int	malloc_game(t_tet *, int);
+int	malloc_next(t_tet *, int, int);
+
+/*
+** aff_tot.c
+*/
+
+int	disp(t_program *);
+
+/*
+** aff_score.c
+*/
+
+void	padding_tab(int **);
+void	score(t_tet *);
+void	size_file(t_tet *, int, int);
+
+/*
+** disp.c
+*/
+
+int	my_disp(t_program *);
 
 #endif /* !PROGRAM_H_ */
