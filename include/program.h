@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Mon Feb 29 20:32:30 2016 marc brout
+** Last update Thu Mar  3 09:57:34 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -14,6 +14,7 @@
 # include <sys/types.h>
 # include <dirent.h>
 # include <stdlib.h>
+# include "disp.h"
 
 # define UNUSED __attribute__((__unused__))
 # define USAGE
@@ -36,6 +37,7 @@ typedef struct		s_tetrimino
 typedef struct		s_program
 {
   t_tetrimino		*tminos;
+  t_tet			tet;
   int			nb_tminos;
 }			t_program;
 
