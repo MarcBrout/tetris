@@ -1,0 +1,49 @@
+barre.tetrimino
+5.tetrimino
+err1.tetrimino
+err2.tetrimino
+L-Inverse.tetrimino
+carre.tetrimino
+8.tetrimino
+7.tetrimino
+err5.tetrimino
+err4.tetrimino
+err3.tetrimino
+6.tetrimino
+Tetriminos : 12
+Tetriminos : Name 5 : Size 1*1 : Color 4 :
+*
+Tetriminos : Name 6 : Error
+Tetriminos : Name 7 : Error
+Tetriminos : Name 8 : Size 1*1 : Color 1 :
+*
+Tetriminos : Name L-Inverse : Size 2*3 : Color 5 :
+ *
+ *
+**
+Tetriminos : Name barre : Size 1*4 : Color 2 :
+*
+*
+*
+*
+Tetriminos : Name carre : Size 2*2 : Color 1 :
+**
+**
+Tetriminos : Name err1 : Error
+Tetriminos : Name err2 : Error
+Tetriminos : Name err3 : Error
+Tetriminos : Name err4 : Error
+Tetriminos : Name err5 : Error
+line = *
+line = *
+line = *
+line = *
+line = *
+line = ****
+line = **
+line =  *
+line =  *
+line = **
+line = **
+line = **
+line = *
