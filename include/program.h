@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Tue Mar  1 15:00:03 2016 marc brout
+** Last update Thu Mar  3 11:30:14 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -66,7 +66,8 @@ t_tetrimino	*load_tetriminos(const char *folderpath,
 				 int *nb_tminos);
 t_tetrimino	*read_folder(DIR *dir, int *nb_tminos);
 int		get_size(const char *firstline,
-			 t_tetrimino *tmino);
+			 t_tetrimino *tmino,
+			 int fd);
 int		check_file(const char *file,
 			   t_tetrimino *tmino,
 			   int fd);
