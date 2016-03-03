@@ -1,13 +1,14 @@
 /*
 ** get_next_line.c for gnl
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Jan  4 10:27:46 2016 marc brout
-** Last update Mon Feb 15 18:37:20 2016 marc brout
+** Last update Thu Mar  3 11:02:18 2016 marc brout
 */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 char		*my_realloc(char *str, int size)
@@ -56,9 +57,9 @@ char		*get_next_line(const int fd)
   int		j;
 
   str = NULL;
-  if (((fd < 0) || (j = -1) > 0 || READ_SIZE < 1 ||
-       (str = get_last_buff(buf, &r, &i, &j)) == NULL || buf[i] == 10))
-    return (str);
+  if ((((fd < 0) || (j = -1) > 0 || READ_SIZE < 1 ||
+	!(str = get_last_buff(buf, &r, &i, &j)) || buf[i] == 10)) && buf[i])
+      return (str);
   size = j + 1;
   while (buf[i] != 10 && (r = read(fd, buf, READ_SIZE)) > 0 && (size += r))
     {
