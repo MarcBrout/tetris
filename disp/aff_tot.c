@@ -5,12 +5,13 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar  3 10:59:48 2016 benjamin duhieu
+** Last update Thu Mar  3 11:26:01 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
 #include <curses.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "program.h"
 
 int	game(t_program *tetris)

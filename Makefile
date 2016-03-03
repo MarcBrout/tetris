@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar  3 10:50:42 2016 benjamin duhieu
+## Last update Thu Mar  3 11:12:39 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/
@@ -39,7 +39,7 @@ CFLAGS  	=	-W -Wall -Werror
 
 HDFLAGS 	=	-Iinclude/
 
-LDFLAGS		=	-lncurses
+LDFLAGS		=	-lncurses -L./lib -lmy
 
 RM      	=	rm -f
 

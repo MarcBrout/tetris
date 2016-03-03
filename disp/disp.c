@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 16:57:52 2016 benjamin duhieu
-** Last update Thu Mar  3 10:44:02 2016 benjamin duhieu
+** Last update Thu Mar  3 11:27:02 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
