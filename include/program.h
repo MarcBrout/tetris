@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Mon Feb 29 20:32:30 2016 marc brout
+** Last update Tue Mar  1 15:00:03 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -38,6 +38,16 @@ typedef struct		s_program
   t_tetrimino		*tminos;
   int			nb_tminos;
 }			t_program;
+
+/*
+** tri.c
+*/
+
+void		swap_tetriminos(t_tetrimino *current,
+				t_tetrimino *current_prev,
+				t_tetrimino *target);
+void		tri_tetriminos(t_tetrimino *root);
+int		purify_tetriminos(t_tetrimino *root);
 
 /*
 ** Debug : debug.c

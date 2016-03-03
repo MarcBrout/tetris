@@ -5,7 +5,7 @@
 ## Login   <brout_m@epitech.net>
 ## 
 ## Started on  Thu Feb 25 16:34:58 2016 marc brout
-## Last update Mon Feb 29 20:28:42 2016 marc brout
+## Last update Tue Mar  1 14:59:53 2016 marc brout
 ##
 
 SRCP		= ./
@@ -18,7 +18,8 @@ SRC     	= $(SRCP)error.c \
 		$(SRCP)debug.c \
 		$(SRCP)tetris_load_tetriminos.c \
 		$(SRCP)my_getnbr.c \
-		$(SRCP)free.c 
+		$(SRCP)free.c \
+		$(SRCP)tri.c \
 
 OBJS    	= $(SRC:.c=.o)
 
