@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar  4 14:25:33 2016 benjamin duhieu
+** Last update Fri Mar  4 17:30:00 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -23,6 +23,31 @@
 # define MALLOC_ERR "Memory allocation error, program aborted.\n"
 # define FILE_ERR "Error while opening tetrimino file\n."
 
+/* typedef enum		e_keys */
+/*   { */
+/*     KEY_LEFT		= 0, */
+/*     KEY_RIGHT, */
+/*     KEY_TURN, */
+/*     KEY_DROP, */
+/*     KEY_QUIT, */
+/*     KEY_PAUSE */
+/*   }			t_keys; */
+
+typedef struct		s_start
+{
+  int			level;
+  char 			*kl;
+  char			*kr;
+  char			*kt;
+  char			*kd;
+  char			*kq;
+  char			*kp;
+  int			row;
+  int			col;
+  int			hide;
+  int			debug;
+}			t_start;
+
 typedef struct		s_tetrimino
 {
   const char		*name;
@@ -36,8 +61,19 @@ typedef struct		s_tetrimino
   struct s_tetrimino	*next;
 }			t_tetrimino;
 
+typedef int (*t_func)(t_start *, char **, int *, char);
+
+typedef struct		s_args
+{
+  char			*arg;
+  char			*long_arg;
+  t_func		func;
+  struct s_args		*next;
+}			t_args;
+
 typedef struct		s_program
 {
+  t_start		start;
   t_tetrimino		*tminos;
   t_tetrimino		*cur;
   t_tetrimino		*first;
@@ -159,5 +195,48 @@ t_tetrimino	*next_form(t_program *, int *);
 */
 
 int	my_disp(t_program *);
+
+/*
+** option.c
+*/
+
+int	add_arg_to_list(const char *str,
+			const char *lstr,
+			t_args *first,
+			t_func function);
+t_args	*init_arg_list();
+int	check_args(t_program *prog,
+		   t_args *root,
+		   const char **av,
+		   int *i);
+int	init_start(t_start *start);
+int	parse_args(t_program *prog, const char **av);
+
+/*
+** help.c
+*/
+
+int	level(t_start *start, char **av, int *i, char arg);
+int	mapsize(t_start *start, char **av, int *i, char arg);
+int	withoutnext(t_start *start, char **av, int *i, char arg);
+int	debugmode(t_start *start, char **av, int *i, char arg);
+void	display_help();
+
+/*
+** get_keys.c
+*/
+
+int	keyleft(t_start *start, char **av, int *i, char arg);
+int	keyright(t_start *start, char **av, int *i, char arg);
+int	keyturn(t_start *start, char **av, int *i, char arg);
+int	keydrop(t_start *start, char **av, int *i, char arg);
+int	keyquit(t_start *start, char **av, int *i, char arg);
+
+/*
+** get_pause.c
+*/
+
+int	help(t_start *start, char **av, int *i, char arg);
+int	keypause(t_start *start, char **av, int *i, char arg);
 
 #endif /* !PROGRAM_H_ */
