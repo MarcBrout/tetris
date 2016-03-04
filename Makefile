@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar  3 11:12:39 2016 benjamin duhieu
+## Last update Fri Mar  4 14:31:27 2016 marc brout
 ##
 
 SRCD		=	disp/
@@ -27,7 +27,11 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCP)my_getnbr.c \
 			$(SRCP)tetris_load_tetriminos.c \
 			$(SRCP)tri.c \
-			$(SRCP)get_next_line.c
+			$(SRCP)get_next_line.c \
+			$(SRCP)options.c \
+			$(SRCP)get_keys.c \
+			$(SRCP)get_pause.c \
+			$(SRCP)help.c
 
 OBJS    	=	$(SRC:.c=.o)
 

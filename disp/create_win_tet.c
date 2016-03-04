@@ -5,10 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:37:03 2016 benjamin duhieu
-** Last update Thu Mar  3 11:43:26 2016 benjamin duhieu
+** Last update Thu Mar  3 11:47:54 2016 marc brout
 */
 
-#include <ncurses/curses.h>
+#include <curses.h>
 #include <stdlib.h>
 #include "program.h"
 
@@ -52,17 +52,17 @@ int		create_win(t_tet *tetris, int xmax, int ymax)
   printf("ok\n");
   if ((tetris->board.game = newwin(tetris->board.y_max, tetris->board.x_max,
   				   1, 27)) == NULL)
-    return (my_puterror("Error : Can't create a new window\n", 1));
+    return (my_puterror("Error : Can't create the board window\n", 1));
   printf("ok\n");
   tetris->score.x_max = 20;
   tetris->score.y_max = 11;
   if ((tetris->score.game = newwin(tetris->score.y_max, tetris->score.x_max,
 				   8, 1)) == NULL)
-    return (my_puterror("Error : Can't create a new window\n", 1));
+    return (my_puterror("Error : Can't create the score window\n", 1));
   tetris->next.x_max = xmax;
   tetris->next.y_max = ymax;
   if ((tetris->next.game = newwin(tetris->next.y_max, tetris->next.x_max,
 				    1, 39)) == NULL)
-    return (my_puterror("Error : Can't create a new window\n", 1));
+    return (my_puterror("Error : Can't create the next tetrimino window\n", 1));
   return (0);
 }
