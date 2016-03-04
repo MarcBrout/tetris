@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar  3 11:34:59 2016 marc brout
+** Last update Fri Mar  4 14:25:33 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -30,6 +30,8 @@ typedef struct		s_tetrimino
   int			**tmino;
   int			width;
   int			height;
+  int			posx;
+  int			posy;
   int			color;
   struct s_tetrimino	*next;
 }			t_tetrimino;
@@ -37,7 +39,10 @@ typedef struct		s_tetrimino
 typedef struct		s_program
 {
   t_tetrimino		*tminos;
+  t_tetrimino		*cur;
+  t_tetrimino		*first;
   t_tet			tet;
+  char			piece;
   int			nb_tminos;
 }			t_program;
 
@@ -133,15 +138,21 @@ int	malloc_next(t_tet *, int, int);
 ** aff_tot.c
 */
 
-int	disp(t_program *);
+int	disp(t_program *, int, int);
 
 /*
 ** aff_score.c
 */
 
-void	padding_tab(int **);
+void	padding_tab(int **, int);
 void	score(t_tet *);
 void	size_file(t_tet *, int, int);
+
+/*
+** aff_next.c
+*/
+
+t_tetrimino	*next_form(t_program *, int *);
 
 /*
 ** disp.c

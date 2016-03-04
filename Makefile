@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar  3 11:12:39 2016 benjamin duhieu
+## Last update Fri Mar  4 12:02:19 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/
@@ -16,6 +16,7 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCD)create_win_tet.c \
 			$(SRCD)aff_tetris.c \
 			$(SRCD)aff_score.c \
+			$(SRCD)aff_next.c \
 			$(SRCD)aff_tot.c \
 			$(SRCD)tab_game.c \
 			$(SRCP)main.c \

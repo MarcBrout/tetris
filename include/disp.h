@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 20:06:03 2016 benjamin duhieu
-** Last update Thu Mar  3 11:06:28 2016 benjamin duhieu
+** Last update Thu Mar  3 19:13:40 2016 benjamin duhieu
 */
 
 #ifndef DISP_H_
@@ -50,6 +50,7 @@ typedef	struct	s_tet
 
 int	create_win(t_tet *, int, int);
 int	my_puterror(const char *str, int);
+
 void	score(t_tet *);
 void	size_file(t_tet *, int, int);
 void	text_end();

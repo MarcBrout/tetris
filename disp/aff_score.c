@@ -1,3 +1,4 @@
+
 /*
 ** aff_score.c for score in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
 **
@@ -5,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:41:16 2016 benjamin duhieu
-** Last update Thu Mar  3 10:41:58 2016 benjamin duhieu
+** Last update Thu Mar  3 14:35:29 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -43,29 +44,6 @@ void	score(t_tet *tetris)
   size_file(tetris, tetris->play.line, 5);
   mvwprintw(tetris->score.game, 6, 16, "0");
   size_file(tetris, tetris->play.level, 6);
-  mvwprintw(tetris->score.game, 8, 13, "00:00");
-  mvwprintw(tetris->score.game, 8, 14, "%d:%d",
-	    tetris->play.min, tetris->play.sec);
-}
-
-void	padding_tab(int **tab)
-{
-  int	i;
-  int	j;
-
-  i = -1;
-  while (tab && tab[i + 1] != NULL)
-    {
-      j = -1;
-      while (tab[i] && tab[i][++j] != -1)
-	{
-	if (j > 0 && j < 10)
-	  tab[i][j] = 0;
-	else
-	  tab[i][j] = -1;
-	}
-    }
-  j = -1;
-  while (tab && tab[i] && tab[i][++j] != -1)
-    tab[i][j] = -1;
+  mvwprintw(tetris->score.game, 8, 13, "%02d:", tetris->play.min);
+  mvwprintw(tetris->score.game, 8, 16, "%02d", tetris->play.sec);
 }
