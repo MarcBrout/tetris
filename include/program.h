@@ -1,16 +1,17 @@
 /*
-** program.h for  in /home/brout_m/RENDU/PSU/PSU_2015_tetris
+** program.h for tetris
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar  4 17:30:00 2016 benjamin duhieu
+** Last update Sat Mar  5 19:13:23 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
 # define PROGRAM_H_
 
+# include <termios.h>
 # include <sys/types.h>
 # include <dirent.h>
 # include <stdlib.h>
@@ -23,25 +24,20 @@
 # define MALLOC_ERR "Memory allocation error, program aborted.\n"
 # define FILE_ERR "Error while opening tetrimino file\n."
 
-/* typedef enum		e_keys */
-/*   { */
-/*     KEY_LEFT		= 0, */
-/*     KEY_RIGHT, */
-/*     KEY_TURN, */
-/*     KEY_DROP, */
-/*     KEY_QUIT, */
-/*     KEY_PAUSE */
-/*   }			t_keys; */
+typedef enum		e_keys
+  {
+    K_LEFT		= 0,
+    K_RIGHT		= 1,
+    K_TURN		= 2,
+    K_DROP		= 3,
+    K_QUIT		= 4,
+    K_PAUSE		= 5
+  }			t_keys;
 
 typedef struct		s_start
 {
   int			level;
-  char 			*kl;
-  char			*kr;
-  char			*kt;
-  char			*kd;
-  char			*kq;
-  char			*kp;
+  char			**keys;
   int			row;
   int			col;
   int			hide;
@@ -80,6 +76,8 @@ typedef struct		s_program
   t_tet			tet;
   char			piece;
   int			nb_tminos;
+  struct termios        oldt;
+  struct termios	newt;
 }			t_program;
 
 /*
@@ -120,10 +118,10 @@ t_tetrimino	*get_tetrimino(const char *file);
 ** Arrays : tabs.c
 */
 
-int	**tab(t_tetrimino *tmino);
+int	**array(t_tetrimino *tmino);
 int	fill_line(const char *str,
 		  int *line, int width, int color);
-int	check_empty_col(int **tab, int width, int height);
+int	check_empty_col(int **array, int width, int height);
 void	fill_tab(t_tetrimino *tmino,
 		 int color, int fd);
 
@@ -152,7 +150,7 @@ int	my_getnbr_i(const char *str, int *i);
 ** free.c
 */
 
-void	free_tab(int **tab, int height);
+void	free_tab(int **array, int height);
 void	free_list(t_tetrimino *root);
 
 /*
@@ -238,5 +236,16 @@ int	keyquit(t_start *start, char **av, int *i, char arg);
 
 int	help(t_start *start, char **av, int *i, char arg);
 int	keypause(t_start *start, char **av, int *i, char arg);
+
+/*
+** recup_env.c
+*/
+
+char	*recup_entry();
+int	is_it_a_key(char **keys, char *input);
+int	set_no_canonique_no_wait(struct termios *oldt,
+				 struct termios *newt);
+int	reset_terminal_to_default(struct termios *oldt);
+int	my_set_term();
 
 #endif /* !PROGRAM_H_ */

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 14:00:14 2016 marc brout
-** Last update Fri Mar  4 16:30:53 2016 marc brout
+** Last update Sat Mar  5 17:58:31 2016 marc brout
 */
 
 #include "program.h"
@@ -82,13 +82,15 @@ int		check_args(t_program *prog, t_args *root,
 int		init_start(t_start *start)
 {
   start->level = 1;
-  if (!(start->kl = my_strdup("\e[D")) ||
-      !(start->kr = my_strdup("\e[C")) ||
-      !(start->kt = my_strdup("\e[A")) ||
-      !(start->kd = my_strdup("\e[B")) ||
-      !(start->kq = my_strdup("q")) ||
-      !(start->kp = my_strdup("p")))
+  if (!(start->keys = malloc(sizeof(char *) * 7)) ||
+      (start->keys[K_LEFT] = tigetstr("kcuf1")) == (char *)-1 ||
+      (start->keys[K_RIGHT] = tigetstr("kcub1")) == (char *)-1 ||
+      (start->keys[K_TURN] = tigetstr("kcuu1")) == (char *)-1 ||
+      (start->keys[K_DROP] = tigetstr("kcud1")) == (char *)-1 ||
+      !(start->keys[K_QUIT] = my_strdup("\e")) ||
+      !(start->keys[K_PAUSE] = my_strdup("p")))
     return (1);
+  start->keys[6] = NULL;
   start->row = 20;
   start->col = 10;
   start->hide = 0;

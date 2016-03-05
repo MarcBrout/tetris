@@ -1,11 +1,11 @@
 /*
 ** get_next_line.c for gnl
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Jan  4 10:27:46 2016 marc brout
-** Last update Mon Feb 15 18:37:20 2016 marc brout
+** Last update Sat Mar  5 18:51:18 2016 marc brout
 */
 
 #include "get_next_line.h"
@@ -23,7 +23,7 @@ char		*my_realloc(char *str, int size)
   while (i <= size)
     tmp[i++] = 0;
   if (str != NULL)
-    free (str);
+    free(str);
   return (tmp);
 }
 

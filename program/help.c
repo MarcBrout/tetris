@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 13:15:17 2016 marc brout
-** Last update Fri Mar  4 16:28:31 2016 marc brout
+** Last update Sat Mar  5 17:09:19 2016 marc brout
 */
 
 #include "program.h"
@@ -34,9 +34,9 @@ int		mapsize(t_start *start, char **av,
 
   c = 0;
   if (!av[*i][11] ||
-      (start->row = my_getnbr_i(&av[*i][11 + c], &c)) <= 0 ||
-      !av[*i][11 + c] ||
-      (start->col = my_getnbr_i(&av[*i][11 + c], &c)) <= 0)
+      (start->row = my_getnbr_i(&av[*i][11], &c)) <= 0 ||
+      !av[*i][11 + ++c] ||
+      (start->col = my_getnbr_i(&av[*i][11], &c)) <= 0)
     return (1);
   return (0);
 }

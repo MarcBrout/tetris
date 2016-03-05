@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Fri Mar  4 17:49:20 2016 benjamin duhieu
+## Last update Sat Mar  5 21:50:28 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/
@@ -32,7 +32,8 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCP)options.c \
 			$(SRCP)get_keys.c \
 			$(SRCP)get_pause.c \
-			$(SRCP)help.c
+			$(SRCP)help.c \
+			$(SRCP)recup_env.c
 
 OBJS    	=	$(SRC:.c=.o)
 
