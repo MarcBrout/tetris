@@ -5,14 +5,14 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Thu Mar  3 11:32:38 2016 marc brout
+** Last update Sat Mar  5 19:13:46 2016 marc brout
 */
 
 #include <stdio.h>
 #include "get_next_line.h"
 #include "program.h"
 
-int			**tab(t_tetrimino *tmino)
+int			**array(t_tetrimino *tmino)
 {
   int			**tab;
   int			i;

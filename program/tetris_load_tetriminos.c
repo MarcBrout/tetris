@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:27:16 2016 marc brout
-** Last update Sat Mar  5 16:34:50 2016 marc brout
+** Last update Sat Mar  5 19:14:18 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -94,7 +94,7 @@ int			check_file(const char *file,
     {
       if (!(tmino->color = get_size(tmp, tmino, fd)))
 	tmino->working = 0;
-      if (!(tmino->tmino = tab(tmino)))
+      if (!(tmino->tmino = array(tmino)))
 	return (1);
       fill_tab(tmino, tmino->color, fd);
       free(tmp);

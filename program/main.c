@@ -5,12 +5,11 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Sat Mar  5 16:12:03 2016 marc brout
+** Last update Sat Mar  5 18:26:52 2016 marc brout
 */
 
 #include <curses.h>
 #include <sys/ioctl.h>
-#include <termios.h>
 #include <unistd.h>
 #include "program.h"
 #include "my.h"
@@ -21,7 +20,8 @@ int			read_non_canonique()
   struct termios	newt;
   char			c;
 
-  if (ioctl(0, TCGETS, &oldt) < 0)
+  if (ioctl(0, TCGETS, &oldt) < 0 ||
+      ioctl(0, TCGETS, &newt) < 0)
     return (1);;
   newt.c_lflag &= ~ICANON;
   newt.c_lflag &= ~ECHO;

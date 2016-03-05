@@ -5,12 +5,13 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Sat Mar  5 17:47:05 2016 marc brout
+** Last update Sat Mar  5 19:13:23 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
 # define PROGRAM_H_
 
+# include <termios.h>
 # include <sys/types.h>
 # include <dirent.h>
 # include <stdlib.h>
@@ -75,6 +76,8 @@ typedef struct		s_program
   t_tet			tet;
   char			piece;
   int			nb_tminos;
+  struct termios        oldt;
+  struct termios	newt;
 }			t_program;
 
 /*
@@ -115,10 +118,10 @@ t_tetrimino	*get_tetrimino(const char *file);
 ** Arrays : tabs.c
 */
 
-int	**tab(t_tetrimino *tmino);
+int	**array(t_tetrimino *tmino);
 int	fill_line(const char *str,
 		  int *line, int width, int color);
-int	check_empty_col(int **tab, int width, int height);
+int	check_empty_col(int **array, int width, int height);
 void	fill_tab(t_tetrimino *tmino,
 		 int color, int fd);
 
@@ -147,7 +150,7 @@ int	my_getnbr_i(const char *str, int *i);
 ** free.c
 */
 
-void	free_tab(int **tab, int height);
+void	free_tab(int **array, int height);
 void	free_list(t_tetrimino *root);
 
 /*
@@ -238,6 +241,11 @@ int	keypause(t_start *start, char **av, int *i, char arg);
 ** recup_env.c
 */
 
+char	*recup_entry();
+int	is_it_a_key(char **keys, char *input);
+int	set_no_canonique_no_wait(struct termios *oldt,
+				 struct termios *newt);
+int	reset_terminal_to_default(struct termios *oldt);
 int	my_set_term();
 
 #endif /* !PROGRAM_H_ */
