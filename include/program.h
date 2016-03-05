@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar  4 17:30:00 2016 benjamin duhieu
+** Last update Sat Mar  5 16:13:11 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -23,25 +23,20 @@
 # define MALLOC_ERR "Memory allocation error, program aborted.\n"
 # define FILE_ERR "Error while opening tetrimino file\n."
 
-/* typedef enum		e_keys */
-/*   { */
-/*     KEY_LEFT		= 0, */
-/*     KEY_RIGHT, */
-/*     KEY_TURN, */
-/*     KEY_DROP, */
-/*     KEY_QUIT, */
-/*     KEY_PAUSE */
-/*   }			t_keys; */
+typedef enum		e_keys
+  {
+    K_LEFT		= 0,
+    K_RIGHT		= 1,
+    K_TURN		= 2,
+    K_DROP		= 3,
+    K_QUIT		= 4,
+    K_PAUSE		= 5
+  }			t_keys;
 
 typedef struct		s_start
 {
   int			level;
-  char 			*kl;
-  char			*kr;
-  char			*kt;
-  char			*kd;
-  char			*kq;
-  char			*kp;
+  char			**keys;
   int			row;
   int			col;
   int			hide;
@@ -238,5 +233,11 @@ int	keyquit(t_start *start, char **av, int *i, char arg);
 
 int	help(t_start *start, char **av, int *i, char arg);
 int	keypause(t_start *start, char **av, int *i, char arg);
+
+/*
+** recup_env.c
+*/
+
+int	my_set_term();
 
 #endif /* !PROGRAM_H_ */
