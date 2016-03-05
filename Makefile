@@ -5,11 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-<<<<<<< HEAD
-## Last update Fri Mar  4 12:02:19 2016 benjamin duhieu
-=======
-## Last update Fri Mar  4 14:31:27 2016 marc brout
->>>>>>> 51cedd79469b28d6a0486c91530f973033163bb0
+## Last update Fri Mar  4 17:49:20 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/

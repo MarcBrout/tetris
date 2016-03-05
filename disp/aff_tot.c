@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Fri Mar  4 17:04:05 2016 benjamin duhieu
+** Last update Fri Mar  4 20:11:28 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -21,7 +21,7 @@ void	init_piece(t_program *tetris, t_tetrimino *tet)
   tet->posx = (tetris->tet.board.x_max / 2) - (tet->width / 2);
   tet->posy = max_htetriminos(tetris->tminos) - tet->height;
   tetris->piece = 1;
-  my_printf("-----posx = %d------posy = %d--------\n", tet->posx, tet->posy);
+  /* my_printf("-----posx = %d------posy = %d--------\n", tet->posx, tet->posy); */
 }
 
 int	chk_case(t_tetrimino *tet, int chk, int i)
@@ -50,8 +50,8 @@ int	move_piece(t_program *tetris, t_tetrimino *tet)
       chk = -1;
       while ((chk = chk_case(tet, chk, i)) < tet->width)
 	{
-	  my_printf("tetris->tet.game.board[tet->posy + i + 1][tet->posx + chk] = %d\n", tetris->tet.game.board[tet->posy + i + 1][tet->posx + chk]);
-	  my_printf("tet->posx : %d, tet->posy : %d\n", tet->posx, tet->posy);
+	  /* my_printf("tetris->tet.game.board[tet->posy + i + 1][tet->posx + chk] = %d\n", tetris->tet.game.board[tet->posy + i + 1][tet->posx + chk]); */
+	  /* my_printf("tet->posx : %d, tet->posy : %d\n", tet->posx, tet->posy); */
 	  if (tetris->tet.game.board[tet->posy + i + 1][tet->posx + chk] != 0)
 	    return (1);
 	}
@@ -72,7 +72,7 @@ void		put_to_board(t_program *tetris, t_tetrimino *tet)
       while (++j < tet->width)
 	{
 	  /* printf("tet->posy : %d, tet->posx : %d, j : %d\n", tet->posy, tet->posx, j); */
-	  my_printf("tet->color : %d\n", tet->color);
+	  /* my_printf("tet->color : %d\n", tet->color); */
 	  tetris->tet.game.board[(tet->posy - 1)][tet->posx + j] = 0;
 	  if (tet->tmino[i][j])
 	    tetris->tet.game.board[tet->posy + i][tet->posx + j] = tet->color;
@@ -86,38 +86,44 @@ void		display_to_board(t_program *tetris)
   int		j;
 
   i = -1;
+  my_printf("-----------------------------------------------------------------------i = %d\n", i);
   while (tetris->tet.game.board && tetris->tet.game.board[++i])
     {
-      j = -1;
-      while (tetris->tet.game.board[i] && tetris->tet.game.board[i][++j])
-	if (tetris->tet.game.board[i][j])
+      j = 0;
+      my_printf("-----------------------------------------------------------------------j = %d\n", j);
+      while (tetris->tet.game.board[i] && tetris->tet.game.board[i][++j] != -1)
+	{
+	  my_printf("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||i = %d\n", i);
+	  if (tetris->tet.game.board[i][j] > 0)
 	  {
+	    my_printf("-----------------------------------------------------------------------i  = %d, j = %d, color = %d\n", i, j, tetris->tet.game.board[i][j]);
 	    wattron(tetris->tet.board.game, COLOR_PAIR(tetris->tet.game.board[i][j]));
-	    mvwprintw(tetris->tet.board.game, 1 + i, 27 + j, "*");
+	    mvwprintw(tetris->tet.board.game, i, j, "*");
 	    wattroff(tetris->tet.board.game, COLOR_PAIR(tetris->tet.game.board[i][j]));
 	  }
+	}
     }
 }
 
-void	debug(t_program *tetris, t_tetrimino *tet)
-{
-  int	i;
-  int	j;
+/* void	debug(t_program *tetris, t_tetrimino *tet) */
+/* { */
+/*   int	i; */
+/*   int	j; */
 
-  i = -1;
-  while (++i < 25)
-    {
-      j = -1;
-      while (++j < 12)
-	my_printf("%d", tetris->tet.game.board[i][j]);
-      my_printf("tet->posx : %d, tet->posy : %d\n", tet->posx, tet->posy);
-    }
-}
+/*   i = -1; */
+/*   while (++i < 25) */
+/*     { */
+/*       j = -1; */
+/*       while (++j < 12) */
+/* 	my_printf("%d", tetris->tet.game.board[i][j]); */
+/*       my_printf("tet->posx : %d, tet->posy : %d\n", tet->posx, tet->posy); */
+/*     } */
+/* } */
 
 int	game(t_program *tetris, t_tetrimino *tet)
 {
   wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
-  my_printf("------------------------------------------------------------------------------------------------------------\n");
+  /* my_printf("------------------------------------------------------------------------------------------------------------\n"); */
   if (!tetris->piece)
     init_piece(tetris, tet);
   else if (tetris->piece == 1)
@@ -129,7 +135,7 @@ int	game(t_program *tetris, t_tetrimino *tet)
 	}
       put_to_board(tetris, tet);
       display_to_board(tetris);
-      debug(tetris, tet);
+      /* debug(tetris, tet); */
     }
   return (0);
 }
@@ -147,6 +153,8 @@ int		draw(t_program *tetris, time_t init)
   score(&tetris->tet);
   wrefresh(tetris->tet.score.game);
   if (!(tmp = next_form(tetris, &next)))
+    return (-1);
+  else
     next = 1;
   wrefresh(tetris->tet.next.game);
   if (game(tetris, tmp))

@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Fri Mar  4 17:31:43 2016 benjamin duhieu
+** Last update Fri Mar  4 17:52:15 2016 benjamin duhieu
 */
 
 #include "program.h"
@@ -47,7 +47,7 @@ int		main(int ac, char **av, UNUSED char **env)
     show_start(&prog.start, &prog);
   purify_tetriminos(prog.tminos);
   prog.piece = 0;
-  /* my_disp(&prog); */
+  my_disp(&prog);
   free_list(prog.tminos);
   return (0);
 }

@@ -5,12 +5,13 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Fri Mar  4 17:19:53 2016 benjamin duhieu
+** Last update Fri Mar  4 19:13:07 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
 #include <curses.h>
 #include "program.h"
+#include "my.h"
 
 void	aff_next(t_program *tetris)
 {
@@ -37,6 +38,7 @@ void	put_to_next(t_program *tetris, t_tetrimino *next)
   int	j;
 
   i = -1;
+  /* my_printf("---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n %p \n--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n", next); */
   while (++i < next->height)
     {
       j = -1;
@@ -58,9 +60,11 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
     {
       if (*next == -1)
 	{
+	  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
+	    return (NULL);
 	  elem = tetris->tminos->next;
 	  choose_tet = rand() % tetris->nb_tminos;
-	  while (choose_tet > 0 && elem != tetris->tminos)
+	  while (choose_tet > 0 && elem != NULL)
 	    {
 	      elem = elem->next;
 	      choose_tet--;
@@ -68,7 +72,7 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	  tetris->first = elem;
 	  elem = tetris->tminos->next;
 	  choose_tet = rand() % tetris->nb_tminos;
-	  while (choose_tet > 0 && elem != tetris->tminos)
+	  while (choose_tet > 0 && elem != NULL)
 	    {
 	      elem = elem->next;
 	      choose_tet--;
@@ -84,10 +88,13 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
     {
       if (!*next)
 	{
+	  free(tetris->first);
+	  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
+	    return (NULL);
 	  tetris->first = tetris->cur;
 	  elem = tetris->tminos->next;
 	  choose_tet = rand() % tetris->nb_tminos;
-	  while (choose_tet > 0 && elem != tetris->tminos)
+	  while (choose_tet > 0 && elem != NULL)
 	    {
 	      elem = elem->next;
 	      choose_tet--;
