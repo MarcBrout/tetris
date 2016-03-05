@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 14:00:14 2016 marc brout
-** Last update Sat Mar  5 16:24:30 2016 marc brout
+** Last update Sat Mar  5 17:58:31 2016 marc brout
 */
 
 #include "program.h"
@@ -85,8 +85,8 @@ int		init_start(t_start *start)
   if (!(start->keys = malloc(sizeof(char *) * 7)) ||
       (start->keys[K_LEFT] = tigetstr("kcuf1")) == (char *)-1 ||
       (start->keys[K_RIGHT] = tigetstr("kcub1")) == (char *)-1 ||
-      !(start->keys[K_TURN] = my_strdup(" ")) ||
-      !(start->keys[K_DROP] = my_strdup("x")) ||
+      (start->keys[K_TURN] = tigetstr("kcuu1")) == (char *)-1 ||
+      (start->keys[K_DROP] = tigetstr("kcud1")) == (char *)-1 ||
       !(start->keys[K_QUIT] = my_strdup("\e")) ||
       !(start->keys[K_PAUSE] = my_strdup("p")))
     return (1);
