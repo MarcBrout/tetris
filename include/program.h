@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Sat Mar  5 19:13:23 2016 marc brout
+** Last update Tue Mar 15 19:38:15 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -51,8 +51,6 @@ typedef struct		s_tetrimino
   int			**tmino;
   int			width;
   int			height;
-  int			posx;
-  int			posy;
   int			color;
   struct s_tetrimino	*next;
 }			t_tetrimino;
@@ -75,6 +73,7 @@ typedef struct		s_program
   t_tetrimino		*first;
   t_tet			tet;
   char			piece;
+  t_pos			posit;
   int			nb_tminos;
   struct termios        oldt;
   struct termios	newt;
@@ -165,7 +164,7 @@ int	create_win(t_tet *, int, int);
 ** tab_game.c
 */
 
-int	malloc_game(t_tet *, int);
+int	malloc_game(t_tet *);
 int	malloc_next(t_tet *, int, int);
 
 /*
@@ -178,7 +177,7 @@ int	disp(t_program *, int, int);
 ** aff_score.c
 */
 
-void	padding_tab(int **, int);
+void	padding_tab(int **);
 void	score(t_tet *);
 void	size_file(t_tet *, int, int);
 

@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 20:06:03 2016 benjamin duhieu
-** Last update Thu Mar  3 19:13:40 2016 benjamin duhieu
+** Last update Tue Mar 15 18:48:13 2016 benjamin duhieu
 */
 
 #ifndef DISP_H_
@@ -36,6 +36,12 @@ typedef struct	s_tab
   int		**board;
   int		**next;
 }		t_tab;
+
+typedef	struct	s_pos
+{
+  int		x;
+  int		y;
+}		t_pos;
 
 typedef	struct	s_tet
 {
