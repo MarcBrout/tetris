@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Mar  4 11:56:44 2016 marc brout
-** Last update Fri Mar  4 18:06:34 2016 marc brout
+** Last update Wed Mar 16 16:40:22 2016 marc brout
 */
 
 #include "program.h"
@@ -13,10 +13,9 @@
 
 int	keyleft(t_start *start, char **av, int *i, char arg)
 {
-  free(start->keys[K_LEFT]);
   if (!arg)
     {
-      if (!av[*i + 1] || av[*i + 1][0] == '-' ||
+      if (!av[*i + 1] || !av[*i + 1][0] || av[*i + 1][0] == '-' ||
 	  !(start->keys[K_LEFT] = my_strdup(av[*i + 1])))
 	return (1);
       *i += 1;
@@ -32,10 +31,9 @@ int	keyleft(t_start *start, char **av, int *i, char arg)
 
 int	keyright(t_start *start, char **av, int *i, char arg)
 {
-  free(start->keys[K_RIGHT]);
   if (!arg)
     {
-      if (!av[*i + 1] || av[*i + 1][0] == '-' ||
+      if (!av[*i + 1] || !av[*i + 1][0] || av[*i + 1][0] == '-' ||
 	  !(start->keys[K_RIGHT] = my_strdup(av[*i + 1])))
 	return (1);
       *i += 1;
@@ -51,10 +49,9 @@ int	keyright(t_start *start, char **av, int *i, char arg)
 
 int	keyturn(t_start *start, char **av, int *i, char arg)
 {
-  free(start->keys[K_TURN]);
   if (!arg)
     {
-      if (!av[*i + 1] || av[*i + 1][0] == '-' ||
+      if (!av[*i + 1] || !av[*i + 1][0] || av[*i + 1][0] == '-' ||
 	  !(start->keys[K_TURN] = my_strdup(av[*i + 1])))
 	return (1);
       *i += 1;
@@ -70,10 +67,9 @@ int	keyturn(t_start *start, char **av, int *i, char arg)
 
 int	keydrop(t_start *start, char **av, int *i, char arg)
 {
-  free(start->keys[K_DROP]);
   if (!arg)
     {
-      if (!av[*i + 1] || av[*i + 1][0] == '-' ||
+      if (!av[*i + 1] || !av[*i + 1][0] || av[*i + 1][0] == '-' ||
 	  !(start->keys[K_DROP] = my_strdup(av[*i + 1])))
 	return (1);
       *i += 1;
@@ -89,10 +85,9 @@ int	keydrop(t_start *start, char **av, int *i, char arg)
 
 int	keyquit(t_start *start, char **av, int *i, char arg)
 {
-  free(start->keys[K_QUIT]);
   if (!arg)
     {
-      if (!av[*i + 1] || av[*i + 1][0] == '-' ||
+      if (!av[*i + 1] || !av[*i + 1][0] || av[*i + 1][0] == '-' ||
 	  !(start->keys[K_QUIT] = my_strdup(av[*i + 1])))
 	return (1);
       *i += 1;
