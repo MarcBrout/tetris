@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 16:57:52 2016 benjamin duhieu
-** Last update Fri Mar  4 17:57:56 2016 benjamin duhieu
+** Last update Wed Mar 16 20:03:08 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -25,7 +25,7 @@ int		my_disp(t_program *tetris)
   tetris->tet.play.high_score = 0;
   tetris->tet.play.score = 0;
   tetris->tet.play.line = 0;
-  tetris->tet.play.level = 0;
+  tetris->tet.play.level = tetris->start.level;
   tetris->tet.play.sec = 0;
   tetris->tet.play.min = 0;
   x_max = max_wtetriminos(tetris->tminos);
