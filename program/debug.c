@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 17:19:32 2016 marc brout
-** Last update Mon Feb 29 19:49:05 2016 marc brout
+** Last update Wed Mar 16 10:17:36 2016 marc brout
 */
 
 #include <unistd.h>
@@ -28,6 +28,21 @@ void		debug_tetriminos_list(t_tetrimino *tminos, int nb_tminos)
 	debug_not_working_tetrimino(tmp);
       tmp = tmp->next;
     }
+  my_printf("Press a key to start Tetris\n");
+}
+
+int		check_another_star(int **tmino, int y, int x, int w)
+{
+  int		i;
+
+  i = 0;
+  while (x + i < w)
+    {
+      if (tmino[y][x + i])
+	return (1);
+      i += 1;
+    }
+  return (0);
 }
 
 void		debug_working_tetrimino(t_tetrimino *tmino)
@@ -43,11 +58,16 @@ void		debug_working_tetrimino(t_tetrimino *tmino)
       x = 0;
       while (x < tmino->width)
 	{
-	  if (tmino->tmino[y][x])
-	    write(1, "*", 1);
+	  if (check_another_star(tmino->tmino, y, x, tmino->width))
+	    {
+	      if (tmino->tmino[y][x])
+		write(1, "*", 1);
+	      else
+		write(1, " ", 1);
+	      x += 1;
+	    }
 	  else
-	    write(1, " ", 1);
-	  x += 1;
+	    break ;
 	}
       write(1, "\n", 1);
       y += 1;
