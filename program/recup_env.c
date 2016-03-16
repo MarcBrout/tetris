@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Mar  5 15:29:25 2016 marc brout
-** Last update Wed Mar 16 11:21:42 2016 marc brout
+** Last update Wed Mar 16 11:27:00 2016 marc brout
 */
 
 #include <term.h>
@@ -73,7 +73,7 @@ int	set_no_canonique_no_wait(struct termios *oldt,
   newt->c_lflag &= ~ICANON;
   newt->c_lflag &= ~ECHO;
   newt->c_cc[VMIN] = 0;
-  newt->c_cc[VTIME] = 1;
+  newt->c_cc[VTIME] = 0;
   if (ioctl(0, TCSETS, newt) < 0)
     return (1);
   return (0);
