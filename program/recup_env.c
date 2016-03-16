@@ -1,17 +1,19 @@
 /*
+
 ** recup_env.c for tetris in /home/brout_m/RENDU/PSU/PSU_2015_tetris
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Mar  5 15:29:25 2016 marc brout
-** Last update Wed Mar 16 11:27:00 2016 marc brout
+** Last update Wed Mar 16 17:59:17 2016 marc brout
 */
 
 #include <term.h>
 #include <curses.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "program.h"
 #include "my.h"
 #include "get_next_line.h"
@@ -22,7 +24,7 @@ int	my_set_term()
   int	ret;
   char	*s;
 
-  if ((err = setupterm((char *)0, 1, &ret)) == ERR)
+  if ((err = setupterm(NULL, 1, &ret)) == ERR)
     return (1);
   if ((s = tigetstr("smkx")) == (char *)-1)
     return (2);

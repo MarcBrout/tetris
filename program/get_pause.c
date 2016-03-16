@@ -5,16 +5,16 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Mar  4 13:18:17 2016 marc brout
-** Last update Fri Mar  4 18:08:14 2016 marc brout
+** Last update Wed Mar 16 13:07:07 2016 marc brout
 */
 
 #include "program.h"
 #include "my.h"
 
-int	help(UNUSED t_start *start, UNUSED char **av,
+int	help(UNUSED t_start *start, char **av,
 	     UNUSED int *i, UNUSED char arg)
 {
-  display_help();
+  display_help(av);
   return (2);
 }
 

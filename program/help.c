@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 13:15:17 2016 marc brout
-** Last update Wed Mar 16 10:07:29 2016 marc brout
+** Last update Wed Mar 16 13:05:49 2016 marc brout
 */
 
 #include "program.h"
@@ -55,9 +55,9 @@ int		debugmode(t_start *start, UNUSED char **av,
   return (0);
 }
 
-void		display_help()
+void		display_help(char **av)
 {
-  my_printf("Usage: ./tetris [options]\n");
+  my_printf("Usage: %s [options]\n", av[0]);
   my_printf("Options:\n");
   my_printf("--help Display this help\n");
   my_printf("-l --level={num} Start Tetris at level num\n");

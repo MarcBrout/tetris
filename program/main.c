@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Wed Mar 16 10:21:01 2016 marc brout
+** Last update Wed Mar 16 18:33:07 2016 marc brout
 */
 
 #include <curses.h>
@@ -33,16 +33,39 @@ int			read_non_canonique()
   return (0);
 }
 
+void		put_visible_str(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str && str[i])
+    {
+      if (str[i] == 27)
+	write(1, "^E", 2);
+      else if (str[i] == ' ')
+	write(1, "(space)", 7);
+      else
+	write(1, &str[i], 1);
+      i += 1;
+    }
+}
+
 int		show_start(t_start *start, t_program *prog)
 {
   my_printf("*** DEBUG MODE ***\n");
-  my_printf("Key Left : %s\n", start->keys[K_LEFT]);
-  my_printf("Key Right : %s\n", start->keys[K_RIGHT]);
-  my_printf("Key Turn : %s\n", start->keys[K_TURN]);
-  my_printf("Key Drop : %s\n", start->keys[K_DROP]);
-  my_printf("Key Quit : %s\n", start->keys[K_QUIT]);
-  my_printf("Key Pause : %s\n", start->keys[K_PAUSE]);
-  (start->hide) ? my_printf("Next : Yes\n") : my_printf("Next : No\n");
+  my_printf("Key Left : ");
+  put_visible_str(start->keys[K_LEFT]);
+  my_printf("\nKey Right : ");
+  put_visible_str(start->keys[K_RIGHT]);
+  my_printf("\nKey Turn : ");
+  put_visible_str(start->keys[K_TURN]);
+  my_printf("\nKey Drop : ");
+  put_visible_str(start->keys[K_DROP]);
+  my_printf("\nKey Quit : ");
+  put_visible_str(start->keys[K_QUIT]);
+  my_printf("\nKey Pause : ");
+  put_visible_str(start->keys[K_PAUSE]);
+  (start->hide) ? my_printf("\nNext : Yes\n") : my_printf("\nNext : No\n");
   my_printf("Level : %d\n", start->level);
   my_printf("Size : %d*%d\n", start->row, start->col);
   debug_tetriminos_list(prog->tminos, prog->nb_tminos);

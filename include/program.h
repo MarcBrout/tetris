@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Tue Mar 15 19:38:15 2016 benjamin duhieu
+** Last update Wed Mar 16 13:05:41 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -217,7 +217,7 @@ int	level(t_start *start, char **av, int *i, char arg);
 int	mapsize(t_start *start, char **av, int *i, char arg);
 int	withoutnext(t_start *start, char **av, int *i, char arg);
 int	debugmode(t_start *start, char **av, int *i, char arg);
-void	display_help();
+void	display_help(char **av);
 
 /*
 ** get_keys.c
