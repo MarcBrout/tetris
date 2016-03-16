@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Mar  5 15:29:25 2016 marc brout
-** Last update Sat Mar  5 19:11:44 2016 marc brout
+** Last update Wed Mar 16 11:21:42 2016 marc brout
 */
 
 #include <term.h>
@@ -20,9 +20,13 @@ int	my_set_term()
 {
   int	err;
   int	ret;
+  char	*s;
 
   if ((err = setupterm((char *)0, 1, &ret)) == ERR)
     return (1);
+  if ((s = tigetstr("smkx")) == (char *)-1)
+    return (2);
+  putp(s);
   return (0);
 }
 

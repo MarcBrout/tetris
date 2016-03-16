@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Sat Mar  5 22:01:54 2016 benjamin duhieu
+** Last update Wed Mar 16 10:21:01 2016 marc brout
 */
 
 #include <curses.h>
@@ -51,10 +51,10 @@ int		show_start(t_start *start, t_program *prog)
 
 int		launch_tetris(t_program *prog)
 {
+  prog->start.hide = 1;
   if (!(prog->tminos =
 	load_tetriminos("./tetriminos", &prog->nb_tminos)))
     return (1);
-  keypad(stdscr, TRUE);
   tri_tetriminos(prog->tminos);
   if (prog->start.debug)
     show_start(&prog->start, prog);
@@ -62,7 +62,6 @@ int		launch_tetris(t_program *prog)
   prog->piece = 0;
   my_disp(prog);
   free_list(prog->tminos);
-  keypad(stdscr, FALSE);
   return (0);
 }
 
