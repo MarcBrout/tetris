@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Tue Mar 15 19:38:15 2016 benjamin duhieu
+** Last update Wed Mar 16 17:02:59 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -72,6 +72,7 @@ typedef struct		s_program
   t_tetrimino		*cur;
   t_tetrimino		*first;
   t_tet			tet;
+  time_t		pause;
   char			piece;
   t_pos			posit;
   int			nb_tminos;

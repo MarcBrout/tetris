@@ -6,7 +6,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:41:16 2016 benjamin duhieu
-** Last update Thu Mar  3 14:35:29 2016 benjamin duhieu
+** Last update Wed Mar 16 17:15:43 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -32,6 +32,7 @@ void	size_file(t_tet *tetris, int nbr, int place)
 
 void	score(t_tet *tetris)
 {
+  werase(tetris->score.game);
   wborder(tetris->score.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
   mvwprintw(tetris->score.game, 2, 2, "High Score");
   mvwprintw(tetris->score.game, 3, 2, "Score");
