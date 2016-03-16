@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Wed Mar 16 10:19:01 2016 marc brout
+** Last update Wed Mar 16 18:22:29 2016 marc brout
 */
 
 #include <stdio.h>
@@ -49,8 +49,9 @@ int			fill_line(const char *str, int *line,
 	line[i] = color;
       i++;
     }
-  if (width < my_strlencst(str))
-    return (1);
+  while (i < my_strlencst(str))
+    if (str[++i] && str[i] != ' ' )
+      return (1);
   return (0);
 }
 
