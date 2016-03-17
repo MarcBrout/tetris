@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar 17 19:44:11 2016 marc brout
+## Last update Thu Mar 17 20:46:41 2016 marc brout
 ##
 
 SRCD		=	disp/
@@ -44,28 +44,53 @@ OBJS    	=	$(SRC:.c=.o)
 
 NAME    	=	tetris
 
-CC      	=	gcc -g
-
 CFLAGS  	=	-W -Wall -Werror
 
-HDFLAGS 	=	-Iinclude/
+CFLAGS 		+=	-Iinclude/
 
 LDFLAGS		=	-lncurses -L./lib -lmy
 
+CC      	=	gcc -g
+
 RM      	=	rm -f
 
-.c.o:
-			$(CC) -c $< -o $@ $(HDFLAGS) $(CFLAGS)
+# LIBRARY
 
-$(NAME):		$(OBJS)
+LIBPATH		=	./lib/
+
+SRCLIB		=	$(LIBPATH)my/my_getnbr.c \
+			$(LIBPATH)my/my_power_rec.c \
+			$(LIBPATH)my/my_putchar.c \
+			$(LIBPATH)my/my_put_nbr.c \
+			$(LIBPATH)my/my_putstr.c \
+			$(LIBPATH)my/my_revstr.c \
+			$(LIBPATH)my/my_strcmp.c \
+			$(LIBPATH)my/my_strncmp.c \
+			$(LIBPATH)my/my_strlen.c \
+			$(LIBPATH)my/my_printf.c \
+			$(LIBPATH)my/my_printfcsspb.c \
+			$(LIBPATH)my/my_printfdiouxx.c \
+			$(LIBPATH)my/my_strdup.c \
+			$(LIBPATH)my/my_printfmetc.c \
+			$(LIBPATH)my/get_next_line.c
+
+OBJSLIB		=	$(SRCLIB:.c=.o)
+
+# CONSTRUCTING PROJECT
+
+$(NAME):		$(OBJSLIB) $(OBJS)
+			ar rc $(LIBPATH)libmy.a $(OBJSLIB)
+			ranlib $(LIBPATH)libmy.a
 			$(CC) -o $(NAME) $(OBJS) $(LDFLAGS)
 
 all:			$(NAME)
 
 clean:
 			$(RM) $(OBJS)
+			$(RM) $(OBJSLIB)
 
 fclean:			clean
 			$(RM) $(NAME)
+			$(RM) $(LIBPATH)/libmy.a
 
 re:			fclean all
