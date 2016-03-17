@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 17:52:20 2016 marc brout
+** Last update Thu Mar 17 18:54:59 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -56,6 +56,7 @@ typedef struct		s_tetrimino
   int			width;
   int			height;
   int			color;
+  int			rot;
   struct s_tetrimino	*next;
 }			t_tetrimino;
 
@@ -91,6 +92,14 @@ typedef struct		s_program
   struct termios        oldt;
   struct termios	newt;
 }			t_program;
+
+/*
+** rotate.c
+*/
+
+void	rotate_piece(t_tetrimino *tmino, int max);
+void	copy_tab_for_rotation(t_tetrimino *tmino);
+void	set_piece(t_tetrimino *tmino);
 
 /*
 ** replace_high_scores.c
