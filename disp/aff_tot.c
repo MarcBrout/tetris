@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 20:22:13 2016 benjamin duhieu
+** Last update Thu Mar 17 20:25:13 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -316,7 +316,7 @@ int		disp(t_program *tetris, int x_max, int y_max)
       if (chk > 0)
 	{
 	  clear();
-	  replace_high_score(tetris, tetris->start.name, tetris->tet.play.score);
+	  replace_high_scores(tetris, tetris->start.name, tetris->tet.play.score);
 	  tetris->tet.over.x_max = 20;
 	  tetris->tet.over.y_max = 12;
 	  if ((tetris->tet.over.game =
