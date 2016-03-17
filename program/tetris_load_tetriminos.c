@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:27:16 2016 marc brout
-** Last update Thu Mar 17 18:52:27 2016 marc brout
+** Last update Thu Mar 17 21:11:38 2016 benjamin duhieu
 */
 
 #include <sys/stat.h>
@@ -79,6 +79,8 @@ int			get_size(const char *firstline,
   if ((tmino->width <= 0 || tmino->height <= 0 || color <= 0 ||
        !tmino->working) && !(tmino->working = 0))
     return (0);
+  tmino->size_max =
+    (tmino->width > tmino->height) ? tmino->width : tmino->height;
   return (color);
 }
 

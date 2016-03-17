@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 20:21:13 2016 benjamin duhieu
+** Last update Thu Mar 17 21:08:54 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -57,6 +57,7 @@ typedef struct		s_tetrimino
   int			**tmino_rot;
   int			width;
   int			height;
+  int			size_max;
   int			color;
   int			rot;
   struct s_tetrimino	*next;

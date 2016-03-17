@@ -1,11 +1,11 @@
 /*
-** aff_tot.c for tot in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
+1;2802;0c** aff_tot.c for tot in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 20:25:13 2016 benjamin duhieu
+** Last update Thu Mar 17 21:21:17 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -52,20 +52,18 @@ void	display_move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   int	j;
 
   i = -1;
-
-
-  while (++i < tet->height)
+  while (++i < tet->size_max)
     {
       j = -1;
-      while (++j < tet->width)
+      while (++j < tet->size_max)
 	{
-	  if (tet->tmino[i][j])
+	  if (tet->tmino_aff[i][j])
 	    {
 	      wattron(tetris->tet.board.game,
-		      COLOR_PAIR(tet->tmino[i][j]));
+		      COLOR_PAIR(tet->tmino_aff[i][j]));
 	      mvwprintw(tetris->tet.board.game, posit->y + i, posit->x + j, "*");
 	      wattroff(tetris->tet.board.game,
-		       COLOR_PAIR(tet->tmino[i][j]));
+		       COLOR_PAIR(tet->tmino_aff[i][j]));
 	    }
 	}
     }
@@ -77,12 +75,12 @@ int	move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   int	j;
 
   i = -1;
-  while (++i < tet->height)
+  while (++i < tet->size_max)
     {
       j = -1;
-      while (++j < tet->width)
+      while (++j < tet->size_max)
 	{
-	  if (tet->tmino[i][j])
+	  if (tet->tmino_aff[i][j])
 	    if (posit->y + i > tetris->start.row
 		|| (posit->x + j < 1 || posit->x + j > tetris->start.col) ||
 		tetris->tet.game.board[posit->y + i][posit->x + j] > 0)
@@ -98,14 +96,14 @@ void	put_to_board(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   int	j;
 
   i = -1;
-  while (++i < tet->height)
+  while (++i < tet->size_max)
 
     {
       j = -1;
-      while (++j < tet->width)
+      while (++j < tet->size_max)
 	{
-	  if (tet->tmino[i][j])
-	    tetris->tet.game.board[posit->y + i][posit->x + j] = tet->tmino[i][j];
+	  if (tet->tmino_aff[i][j])
+	    tetris->tet.game.board[posit->y + i][posit->x + j] = tet->tmino_aff[i][j];
 	}
     }
 }
@@ -142,6 +140,13 @@ int	key_quit(UNUSED t_program *tetris, UNUSED t_tetrimino *tet)
   return (1);
 }
 
+int	key_turn(UNUSED t_program *tetris, t_tetrimino *tet)
+{
+  tet->rot = (tet->rot + 1) % 3;
+  set_piece(tet);
+  return (0);
+}
+
 int		key_pause(t_program *tetris, UNUSED t_tetrimino *tet)
 {
   int		recup;
@@ -165,7 +170,7 @@ void	init_tab(int (*key_tab[6])(t_program *, t_tetrimino *))
 {
   key_tab[K_LEFT] = &key_left;
   key_tab[K_RIGHT] = &key_right;
-  /* key_tab[K_TURN] = &key_turn; */
+  key_tab[K_TURN] = &key_turn;
   key_tab[K_DROP] = &key_drop;
   key_tab[K_QUIT] = &key_quit;
   key_tab[K_PAUSE] = &key_pause;
@@ -194,7 +199,7 @@ int	line_completed(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   i = -1;
   chk = 0;
   count = 0;
-  while (++i < tet->height)
+  while (++i < tet->size_max)
     {
       j = 0;
       while (tetris->tet.game.board[posit->y + i][++j] > 0);
@@ -219,6 +224,7 @@ int	game(t_program *tetris, t_tetrimino *tet)
   werase(tetris->tet.board.game);
   wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
   init_tab(key_tab);
+  set_piece(tet);
   if ((touch = recup_entry(tetris)))
     if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
       if (key_tab[recup](tetris, tet))
