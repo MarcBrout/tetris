@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Mon Mar 14 21:24:01 2016 benjamin duhieu
+** Last update Thu Mar 17 12:26:28 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -27,7 +27,7 @@ void	aff_next(t_program *tetris)
 	  if (tetris->tet.game.next[i][j] > 0)
 	    {
 	      wattron(tetris->tet.next.game, COLOR_PAIR(tetris->tet.game.next[i][j]));
-	      mvwprintw(tetris->tet.next.game, i + 1, j, "*");
+	      mvwprintw(tetris->tet.next.game, i, j, "*");
 	      wattroff(tetris->tet.next.game, COLOR_PAIR(tetris->tet.game.next[i][j]));
 	    }
 	}
@@ -38,17 +38,20 @@ void	put_to_next(t_program *tetris, t_tetrimino *next)
 {
   int	i;
   int	j;
+  t_pos	posit;
 
   i = -1;
+  posit.x = (tetris->tet.next.x_max / 2) - (next->width / 2);
+  posit.y = (tetris->tet.next.y_max / 2) - (next->height / 2);
   while (++i < next->height)
     {
       j = -1;
       while (++j < next->width)
 	{
 	  if (next->tmino[i][j])
-	    tetris->tet.game.next[i + 1][j + 1] = next->color;
+	    tetris->tet.game.next[i + posit.y][j + posit.x] = next->color;
 	  else
-	    tetris->tet.game.next[i + 1][j + 1] = 0;
+	    tetris->tet.game.next[i + posit.y][j + posit.x] = 0;
 	}
     }
   aff_next(tetris);
@@ -64,10 +67,7 @@ void	erase_next(t_program *tetris)
     {
       j = 0;
       while (tetris->tet.game.next[i][++j] != -1)
-	{
-	  /* printf("tetris->tet.game[%d][%d] = %d\n", i, j, tetris->tet.game.next[i][j]); */
-	  tetris->tet.game.next[i][j] = 0;
-	}
+	tetris->tet.game.next[i][j] = 0;
     }
 }
 
@@ -105,8 +105,11 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	}
       else if (*next == 0)
 	bol = 1;
-      put_to_next(tetris, tetris->cur);
-      return (tetris->first);
+      if (!bol)
+	{
+	  put_to_next(tetris, tetris->cur);
+	  return (tetris->first);
+	}
     }
   if (bol == 1)
     {

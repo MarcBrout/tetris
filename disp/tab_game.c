@@ -5,31 +5,31 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:42:55 2016 benjamin duhieu
-** Last update Tue Mar 15 18:56:10 2016 benjamin duhieu
+** Last update Thu Mar 17 13:02:36 2016 benjamin duhieu
 */
 
 #include <stdlib.h>
 #include "program.h"
 
-void	padding_tab(int **tab)
+void	padding_tab(t_program *tet, int **tab)
 {
   int	i;
   int	j;
 
   i = -1;
-  while (tab && ++i < 18 && tab[i])
+  while (tab && ++i < tet->start.row + 1 && tab[i])
     {
       j = -1;
-      while (++j < 12)
+      while (++j < tet->start.col + 2)
 	{
-	  if (j > 0 && j < 11)
+	  if (j > 0 && j < tet->start.col + 2)
 	    tab[i][j] = 0;
 	  else
 	    tab[i][j] = -1;
 	}
     }
   j = -1;
-  while (tab && ++j < 12)
+  while (tab && ++j < tet->start.col + 2)
     tab[i][j] = -1;
 }
 
@@ -52,21 +52,22 @@ void	padding_next(int **tab, int ymax, int xmax)
     }
 }
 
-int	malloc_game(t_tet *tetris)
+int	malloc_game(t_program *tet, t_tet *tetris)
 {
   int	i;
 
-  if ((tetris->game.board = malloc(sizeof(int *) * (20))) == NULL)
+  if ((tetris->game.board = malloc(sizeof(int *) *
+				   (tet->start.row + 3))) == NULL)
     return (1);
-  tetris->game.board[19] = NULL;
+  tetris->game.board[tet->start.row + 2] = NULL;
   i = -1;
-  while (++i < 19)
+  while (++i < tet->start.row + 2)
     {
-      if ((tetris->game.board[i] = malloc(sizeof(int) * 12)) == NULL)
+      if ((tetris->game.board[i] = malloc(sizeof(int) *
+					  tet->start.col + 3)) == NULL)
 	return (1);
-      tetris->game.board[i][11] = -1;
     }
-  padding_tab(tetris->game.board);
+  padding_tab(tet, tetris->game.board);
   return (0);
 }
 

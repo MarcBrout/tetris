@@ -1,4 +1,3 @@
-
 /*
 ** aff_score.c for score in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
 **
@@ -6,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:41:16 2016 benjamin duhieu
-** Last update Wed Mar 16 17:15:43 2016 benjamin duhieu
+** Last update Thu Mar 17 11:47:17 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -21,7 +20,7 @@ void	size_file(t_tet *tetris, int nbr, int place)
 
   power = 10000;
   i = 0;
-  while ((power / 10) >= nbr && (power / 10) > 0)
+  while ((power / 10) > (nbr / 10) && (power / 10) > 0)
     {
       mvwprintw(tetris->score.game, place, 13 + i, " ");
       i++;
@@ -30,7 +29,7 @@ void	size_file(t_tet *tetris, int nbr, int place)
   mvwprintw(tetris->score.game, place, 13 + i, "%d", nbr);
 }
 
-void	score(t_tet *tetris)
+void	score(t_program *tet, t_tet *tetris)
 {
   werase(tetris->score.game);
   wborder(tetris->score.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
@@ -47,4 +46,6 @@ void	score(t_tet *tetris)
   size_file(tetris, tetris->play.level, 6);
   mvwprintw(tetris->score.game, 8, 13, "%02d:", tetris->play.min);
   mvwprintw(tetris->score.game, 8, 16, "%02d", tetris->play.sec);
+
+  mvwprintw(tetris->score.game, 10, 2, "Player:    %s", tet->start.name);
 }

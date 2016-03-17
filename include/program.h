@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 13:01:24 2016 marc brout
+** Last update Thu Mar 17 13:04:23 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -37,6 +37,7 @@ typedef enum		e_keys
 typedef struct		s_start
 {
   int			level;
+  char			*name;
   char			**keys;
   int			row;
   int			col;
@@ -169,13 +170,13 @@ void	free_list(t_tetrimino *root);
 
 int	max_wtetriminos(t_tetrimino *);
 int	max_htetriminos(t_tetrimino *);
-int	create_win(t_tet *, int, int);
+int	create_win(t_program *, t_tet *, int, int);
 
 /*
 ** tab_game.c
 */
 
-int	malloc_game(t_tet *);
+int	malloc_game(t_program *, t_tet *);
 int	malloc_next(t_tet *, int, int);
 
 /*
@@ -188,8 +189,8 @@ int	disp(t_program *, int, int);
 ** aff_score.c
 */
 
-void	padding_tab(int **);
-void	score(t_tet *);
+void	padding_tab(t_program *, int **);
+void	score(t_program *, t_tet *);
 void	size_file(t_tet *, int, int);
 
 /*
