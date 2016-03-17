@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 13:04:23 2016 marc brout
+** Last update Thu Mar 17 15:46:44 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -183,6 +183,7 @@ int	malloc_next(t_tet *, int, int);
 ** aff_tot.c
 */
 
+int	game_over(t_program *, int, int);
 int	disp(t_program *, int, int);
 
 /*

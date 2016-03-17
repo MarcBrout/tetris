@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 12:41:33 2016 benjamin duhieu
+** Last update Thu Mar 17 17:05:38 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -52,6 +52,8 @@ void	display_move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   int	j;
 
   i = -1;
+
+
   while (++i < tet->height)
     {
       j = -1;
@@ -283,12 +285,14 @@ int		disp(t_program *tetris, int x_max, int y_max)
 {
   time_t	init;
   int		chk;
+  int		x;
+  int		y;
 
   if ((init = time(NULL)) == -1)
     return (1);
   tetris->pause = 0;
   initscr();
-  keypad(stdscr, TRUE);
+  keypad(stdscr, true);
   set_escdelay(0);
   noecho();
   curs_set(0);
@@ -302,17 +306,24 @@ int		disp(t_program *tetris, int x_max, int y_max)
   set_no_canonique_no_wait(&tetris->oldt, &tetris->newt);
   while (1)
     {
+      getmaxyx(stdscr, y, x);
+      if (x <= 41 + tetris->tet.board.x_max + tetris->tet.next.x_max ||
+      	  y <= 2 + tetris->tet.board.y_max)
+	return (1);
       wrefresh(stdscr);
       if ((chk = draw(tetris, init)) == -1)
 	return (1);
       if (chk > 0)
 	{
+	  clear();
+	  while (!(game_over(tetris, x, y)));
 	  reset_terminal_to_default(&tetris->oldt);
 	  endwin();
 	  return (0);
 	}
       usleep(1010000 - (50000 * tetris->tet.play.level));
     }
+  clear();
   reset_terminal_to_default(&tetris->oldt);
   endwin();
   return (0);

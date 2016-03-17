@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Thu Mar 17 12:53:23 2016 marc brout
+** Last update Thu Mar 17 16:33:10 2016 benjamin duhieu
 */
 
 #include <curses.h>
@@ -88,7 +88,8 @@ int		launch_tetris(t_program *prog)
     return (1);
   prog->nb_tminos -= ret;
   prog->piece = 0;
-  my_disp(prog);
+  if (my_disp(prog))
+    return (1);
   free_list(prog->tminos);
   return (0);
 }
@@ -105,6 +106,7 @@ int		main(int ac, char **av,char **env)
       if ((ret = parse_args(&prog, (const char **)av)))
 	return (ret % 2);
     }
-  launch_tetris(&prog);
+  if (launch_tetris(&prog))
+    return (1);
   return (0);
 }
