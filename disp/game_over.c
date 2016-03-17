@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar 17 17:46:29 2016 benjamin duhieu
-** Last update Thu Mar 17 20:20:23 2016 benjamin duhieu
+** Last update Thu Mar 17 20:31:07 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -26,8 +26,7 @@ void	size_over(t_program *tetris, int nbr, int place, int x)
       i++;
       power /= 10;
     }
-  mvwprintw(tetris->tet.over.game, place, x + i, "%d",
-	    tetris->hscore[place - 1]);
+  mvwprintw(tetris->tet.over.game, place, x + i, "%d", nbr);
 }
 
 void	put_score(t_program *tetris, char *str, int x, int y)
@@ -42,7 +41,7 @@ void	put_score(t_program *tetris, char *str, int x, int y)
     mvwprintw(tetris->tet.over.game, y, x + i, " ");
   mvwprintw(tetris->tet.over.game, y, x + i, ":");
   i++;
-  size_over(tetris, tetris->tet.play.score, y, x + i);
+  size_over(tetris, tetris->hscore[y - 1].score, y, x + i);
 }
 
 void	tab_score(t_program *tetris)
