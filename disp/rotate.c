@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:55:54 2016 marc brout
-** Last update Thu Mar 17 20:57:38 2016 marc brout
+** Last update Thu Mar 17 21:25:15 2016 marc brout
 */
 
 #include "program.h"
@@ -54,6 +54,24 @@ void		copy_tab_for_rotation(t_tetrimino *tmino)
     }
 }
 
+void		copy_rotation_to_tab(t_tetrimino *tmino)
+{
+  int		x;
+  int		y;
+
+  y = 0;
+  while (y < tmino->height)
+    {
+      x = 0;
+      while (x < tmino->width)
+	{
+	  tmino->tmino_aff[y][x] = tmino->tmino_rot[y][x];
+	  x += 1;
+	}
+      y += 1;
+    }
+}
+
 void		set_piece(t_tetrimino *tmino)
 {
   int		i;
@@ -67,4 +85,5 @@ void		set_piece(t_tetrimino *tmino)
       rotate_piece(tmino, max);
       i += 1;
     }
+  copy_rotation_to_tab(tmino);
 }
