@@ -5,7 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
+<<<<<<< HEAD
 ** Last update Thu Mar 17 15:46:44 2016 benjamin duhieu
+=======
+** Last update Thu Mar 17 16:52:24 2016 marc brout
+>>>>>>> 0db5c68548292941826acdfadde92c63af9fa1da
 */
 
 #ifndef PROGRAM_H_
@@ -39,6 +43,7 @@ typedef struct		s_start
   int			level;
   char			*name;
   char			**keys;
+  char			keyalloc[6];
   int			row;
   int			col;
   int			hide;
@@ -129,6 +134,7 @@ t_tetrimino	*get_tetrimino(const char *file);
 ** Arrays : tabs.c
 */
 
+void	free_args(t_args *rootarg);
 int	**array(t_tetrimino *tmino);
 int	fill_line(const char *str,
 		  int *line, int width, int color);
@@ -161,6 +167,9 @@ int	my_getnbr_i(const char *str, int *i);
 ** free.c
 */
 
+void	free_keys(t_program *tetris);
+void	free_high_score(t_program *tetris);
+void	free_rot_tab(int **rot_tab, int w, int h);
 void	free_tab(int **array, int height);
 void	free_list(t_tetrimino *root);
 
@@ -264,15 +273,17 @@ int	my_set_term();
 ** temp_tetriminos.c
 */
 
-int	init_rotation_tabs(t_tetrimino *);
-void	copy_rotation_tabs(t_tetrimino *);
-void	my_bzero(void *, int);
+int	init_rotation_tabs(t_tetrimino *tmino);
+void	copy_rotation_tabs(t_tetrimino *tmino);
+void	my_bzero(void *data, int size);
 
 /*
 ** get_high_scores.c
 */
 
-void	init_high_scores(t_program *);
-int	load_high_scores(t_program *);
+void	init_high_scores(t_program *tetris);
+int	load_high_scores(t_program *tetris);
+void	my_putnbr_tofd(int nb, int fd);
+int	save_high_scores(t_program *tetris);
 
 #endif /* !PROGRAM_H_ */
