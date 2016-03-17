@@ -1,19 +1,18 @@
 /*
-** my_power_rec.c for my_power_rec in /home/brout_m/dev/PJ5
-** 
+** my_power_rec.c for lib
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
-** Started on  Fri Oct  2 11:57:05 2015 marc brout
-** Last update Sun Oct 18 12:57:24 2015 marc brout
+**
+** Started on  Mon Mar 14 18:50:35 2016 marc brout
+** Last update Mon Mar 14 22:54:41 2016 marc brout
 */
 
-int	my_power_rec(int nb, int power)
+int	my_power_rec(int nb, int i)
 {
-  if (power == 0)
+  if (i < 0 || i > 100000)
+    return (0);
+  if (i == 0)
     return (1);
-  if (power == 1)
-    return (nb);
-  power = power - 1;
-  nb = nb * my_power_rec(nb, power);
+  return (nb * my_power_rec(nb, i - 1));
 }

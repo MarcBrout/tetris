@@ -1,11 +1,11 @@
 /*
 ** my_printf.c for my_printf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Tue Nov  3 14:56:06 2015 marc brout
-** Last update Tue Nov 17 13:53:01 2015 marc brout
+** Last update Mon Mar 14 18:24:34 2016 marc brout
 */
 
 #include "my.h"
@@ -14,7 +14,6 @@ int		my_printf(const char *f, ...)
 {
   va_list	ap;
   t_ptrftab	ftab;
-  char		*arg;
   int		i;
   int		len;
 
@@ -28,13 +27,13 @@ int		my_printf(const char *f, ...)
 	{
 	  if (my_check_empty(f, i) > 0)
 	    return (-1);
-	  len += my_prints(f, &i) + ftab[get_flag(f[i])](ap, f[i++], f, i);
+	  len += my_prints(f, &i) + ftab[get_flag(f[i])](ap, f[i], f, i);
+	  i += 1;
 	}
       else if (len++)
 	my_putchar(f[i++]);
     }
-  if (free != NULL)
-    free(ftab);
+  free(ftab);
   va_end(ap);
   return (len);
 }
@@ -48,7 +47,7 @@ int		get_flag(char c)
   tab = my_strdup("diouxXcsSpb%");
   while (c != tab[i] && tab[i])
     i++;
-  if (tab[i] = 0)
+  if (tab[i] == 0)
     return (12);
   if (tab != NULL)
     free(tab);
@@ -99,12 +98,10 @@ int	check_octal(unsigned char c)
 
 int	put_octal(unsigned char c)
 {
-  int	nb;
   int	res;
   int	pi;
 
   res = 0;
-  nb = 0;
   pi = 0;
   while ((c / 8) > 0)
     {

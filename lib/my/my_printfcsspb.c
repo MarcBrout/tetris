@@ -1,22 +1,27 @@
 /*
 ** my_printfcsspb.c for printf
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Wed Nov  4 16:57:46 2015 marc brout
-** Last update Tue Nov 17 13:34:14 2015 marc brout
+** Last update Mon Mar 14 18:28:17 2016 marc brout
 */
 
 #include "my.h"
 
-int	my_print_c(va_list ap, char c, const char *str, int pos)
+int	my_print_c(va_list ap, UNUSED char c,
+		   UNUSED const char *str,
+		   UNUSED int pos)
 {
   my_putchar((unsigned char) va_arg(ap, int));
   return (1);
 }
 
-int	my_print_s(va_list ap, char c, const char *st, int pos)
+int	my_print_s(va_list ap,
+		   UNUSED char c,
+		   UNUSED const char *st,
+		   UNUSED int pos)
 {
   char	*str;
   int	i;
@@ -33,7 +38,10 @@ int	my_print_s(va_list ap, char c, const char *st, int pos)
   return (i);
 }
 
-int	my_print_s2(va_list ap, char c, const char *st, int pos)
+int	my_print_s2(va_list ap,
+		    UNUSED char c,
+		    UNUSED const char *st,
+		    UNUSED int pos)
 {
   char	*str;
   int	i;
@@ -59,7 +67,10 @@ int	my_print_s2(va_list ap, char c, const char *st, int pos)
   return (tot);
 }
 
-int		my_print_p(va_list ap, char c, const char *str, int pos)
+int		my_print_p(va_list ap,
+			   UNUSED char c,
+			   UNUSED  const char *str,
+			   UNUSED int pos)
 {
   void		**ptr;
   int		count;
@@ -83,7 +94,10 @@ int		my_print_p(va_list ap, char c, const char *str, int pos)
   return (count);
 }
 
-int	my_print_b(va_list ap, char c, const char *str, int pos)
+int	my_print_b(va_list ap,
+		   UNUSED char c,
+		   UNUSED const char *str,
+		   UNUSED int pos)
 {
   return (my_putnbr_base_un(va_arg(ap,unsigned int), "01"));
 }

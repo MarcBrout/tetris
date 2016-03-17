@@ -1,12 +1,14 @@
 /*
 ** my_revstr.c for my_revstr in /home/brout_m/dev/piscine/PJ6
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Oct  5 13:49:10 2015 marc brout
-** Last update Sat Oct 17 17:48:57 2015 marc brout
+** Last update Mon Mar 14 11:34:20 2016 marc brout
 */
+
+#include "my.h"
 
 char	*my_revstr(char *str)
 {

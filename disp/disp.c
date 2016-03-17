@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 16:57:52 2016 benjamin duhieu
-** Last update Thu Mar 17 17:13:13 2016 benjamin duhieu
+** Last update Thu Mar 17 19:44:53 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -113,7 +113,7 @@ int		game_over(UNUSED t_program *tetris, UNUSED int x, int y)
   mvprintw((y / 2) + 14, 70, "*       *");
   wattroff(stdscr, COLOR_PAIR(6));
   wrefresh(stdscr);
-  if ((touch = recup_entry()))
+  if ((touch = recup_entry(tetris)))
     if ((recup = is_it_a_key(tetris->start.keys, touch)) == 4)
       return (1);
   return (0);

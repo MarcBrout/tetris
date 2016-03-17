@@ -1,22 +1,27 @@
 /*
 ** my_printfmetc.c
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Sun Nov  8 15:35:05 2015 marc brout
-** Last update Tue Nov 17 13:33:48 2015 marc brout
+** Last update Mon Mar 14 18:30:59 2016 marc brout
 */
 
 #include "my.h"
 
-int	my_print_etc(va_list ap, char c, const char *str, int i)
+int	my_print_etc(UNUSED va_list ap, char c,
+		     UNUSED const char *str,
+		     UNUSED int i)
 {
   my_putchar(c);
   return (1);
 }
 
-int	my_print_pcent(va_list ap, char c, const char *str, int i)
+int	my_print_pcent(UNUSED va_list ap,
+		       UNUSED char c,
+		       UNUSED const char *str,
+		       UNUSED int i)
 {
   my_putchar('%');
   return (1);

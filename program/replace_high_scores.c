@@ -5,26 +5,44 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:45:37 2016 marc brout
-** Last update Thu Mar 17 17:50:55 2016 marc brout
+** Last update Thu Mar 17 19:02:28 2016 marc brout
 */
 
 #include "program.h"
+
+int	is_high_score(t_program *tetris, int score)
+{
+  int	i;
+
+  i = 0;
+  while (i < 10)
+    {
+      if (score >= tetris->hscore[i].score)
+	return (i);
+      i += 1;
+    }
+  return (-1);
+}
 
 void	replace_high_scores(t_program *tetris,
 			    char *name,
 			    int score)
 {
+  int	pos;
   int	i;
 
-  i = 9;
-  if (tetris->hscore[9].name)
-    free(tetris->hscore[9].name);
-  while (i > 0)
+  if ((pos = is_high_score(tetris, score)) > 0)
     {
-      tetris->hscore[i].name = tetris->hscore[i - 1].name;
-      tetris->hscore[i].score = tetris->hscore[i - 1].score;
-      i -= 1;
+      i = 9;
+      if (tetris->hscore[9].name)
+	free(tetris->hscore[9].name);
+      while (i > pos)
+	{
+	  tetris->hscore[i].name = tetris->hscore[i - 1].name;
+	  tetris->hscore[i].score = tetris->hscore[i - 1].score;
+	  i -= 1;
+	}
+      tetris->hscore[pos].name = name;
+      tetris->hscore[pos].score = score;
     }
-  tetris->hscore[0].name = name;
-  tetris->hscore[0].score = score;
 }
