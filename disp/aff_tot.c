@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 17:05:38 2016 benjamin duhieu
+** Last update Thu Mar 17 20:17:59 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -206,7 +206,7 @@ int	line_completed(t_program *tetris, t_tetrimino *tet, t_pos *posit)
 	  chk = 1;
 	}
     }
-  tetris->tet.play.score += count * 10;
+  tetris->tet.play.score += (count * count) * 10;
   return (chk);
 }
 
@@ -316,7 +316,13 @@ int		disp(t_program *tetris, int x_max, int y_max)
       if (chk > 0)
 	{
 	  clear();
-	  while (!(game_over(tetris, x, y)));
+	  replace_high_score(tetris, tetris->start.name, tetris->tet.play.score);
+	  tetris->tet.over.x_max = 20;
+	  tetris->tet.over.y_max = 12;
+	  if ((tetris->tet.over.game =
+	       newwin(tetris->tet.over.y_max, tetris->tet.over.x_max, 8, 1)) == NULL)
+	    return (my_puterror("Error : Can't create the game over window\n", 1));
+	  while (!(game_over(tetris, y)));
 	  reset_terminal_to_default(&tetris->oldt);
 	  endwin();
 	  return (0);

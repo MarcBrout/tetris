@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar 17 12:55:37 2016 marc brout
+## Last update Thu Mar 17 18:36:59 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/
@@ -19,6 +19,7 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCD)aff_next.c \
 			$(SRCD)aff_tot.c \
 			$(SRCD)tab_game.c \
+			$(SRCD)game_over.c \
 			$(SRCP)main.c \
 			$(SRCP)debug.c \
 			$(SRCP)error.c \
