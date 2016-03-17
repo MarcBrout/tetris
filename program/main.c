@@ -5,11 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-<<<<<<< HEAD
-** Last update Thu Mar 17 16:33:10 2016 benjamin duhieu
-=======
-** Last update Thu Mar 17 17:08:41 2016 marc brout
->>>>>>> 0db5c68548292941826acdfadde92c63af9fa1da
+** Last update Thu Mar 17 17:19:27 2016 benjamin duhieu
 */
 
 #include <curses.h>
@@ -94,23 +90,18 @@ int		launch_tetris(t_program *prog)
     return (1);
   prog->nb_tminos -= ret;
   prog->piece = 0;
-<<<<<<< HEAD
   if (my_disp(prog))
     return (1);
-=======
-  /* my_disp(prog); */
   if (save_high_scores(prog))
     return (1);
   free_keys(prog);
   free_high_score(prog);
->>>>>>> 0db5c68548292941826acdfadde92c63af9fa1da
   free_list(prog->tminos);
   return (0);
 }
 
 int		main(int ac, char **av,char **env)
 {
-  TERMINAL	*term;
   t_program	prog;
   int		ret;
 
@@ -121,13 +112,7 @@ int		main(int ac, char **av,char **env)
       if ((ret = parse_args(&prog, (const char **)av)))
 	return (ret % 2);
     }
-<<<<<<< HEAD
   if (launch_tetris(&prog))
     return (1);
-=======
-  term = set_curterm(cur_term);
-  del_curterm(term);
-  launch_tetris(&prog);
->>>>>>> 0db5c68548292941826acdfadde92c63af9fa1da
   return (0);
 }

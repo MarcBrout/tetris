@@ -5,11 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-<<<<<<< HEAD
-** Last update Thu Mar 17 15:46:44 2016 benjamin duhieu
-=======
-** Last update Thu Mar 17 16:52:24 2016 marc brout
->>>>>>> 0db5c68548292941826acdfadde92c63af9fa1da
+** Last update Thu Mar 17 17:19:44 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
