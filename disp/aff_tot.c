@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Wed Mar 16 21:10:32 2016 benjamin duhieu
+** Last update Thu Mar 17 12:41:33 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -218,13 +218,9 @@ int	game(t_program *tetris, t_tetrimino *tet)
   wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
   init_tab(key_tab);
   if ((touch = recup_entry()))
-    {
-      if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
-	{
-	  if (key_tab[recup](tetris, tet))
-	    return (-1);
-	}
-    }
+    if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
+      if (key_tab[recup](tetris, tet))
+	return (-1);
   if (!tetris->piece)
     {
       init_piece(tetris, tet, &tetris->posit);
@@ -235,10 +231,11 @@ int	game(t_program *tetris, t_tetrimino *tet)
       if (move_piece(tetris, tet, &tetris->posit))
 	{
 	  tetris->posit.y--;
+	  if (tetris->posit.y < 0)
+	    return (2);
 	  put_to_board(tetris, tet, &tetris->posit);
+	  line_completed(tetris, tet, &tetris->posit);
 	  display_to_board(tetris);
-	  if (line_completed(tetris, tet, &tetris->posit))
-	    display_to_board(tetris);
 	  tetris->piece = 0;
 	  return (1);
 	}
@@ -263,16 +260,18 @@ int		draw(t_program *tetris, time_t init)
     return (-1);
   if (tetris->tet.play.score >= 100 * tetris->tet.play.level)
     tetris->tet.play.level++;
+  if (tetris->tet.play.score >= tetris->tet.play.high_score)
+    tetris->tet.play.high_score = tetris->tet.play.score;
   tetris->tet.play.sec = (new_time - init) % 60;
   tetris->tet.play.min = (new_time - init) / 60;
-  score(&tetris->tet);
+  score(tetris, &tetris->tet);
   wrefresh(tetris->tet.score.game);
   if (!(tmp = next_form(tetris, &next)))
     return (-1);
   else
     next = 1;
   wrefresh(tetris->tet.next.game);
-  if ((chk = game(tetris, tmp)) == -1)
+  if ((chk = game(tetris, tmp)) == -1 || chk == 2)
     return (1);
   if (chk > 0)
     next = 0;
@@ -299,16 +298,16 @@ int		disp(t_program *tetris, int x_max, int y_max)
     return (1);
   if (malloc_next(&tetris->tet, x_max, y_max))
     return (1);
+  text();
   set_no_canonique_no_wait(&tetris->oldt, &tetris->newt);
   while (1)
     {
-      clear();
-      text();
       wrefresh(stdscr);
       if ((chk = draw(tetris, init)) == -1)
 	return (1);
       if (chk > 0)
 	{
+	  reset_terminal_to_default(&tetris->oldt);
 	  endwin();
 	  return (0);
 	}

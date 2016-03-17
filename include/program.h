@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Wed Mar 16 19:37:12 2016 benjamin duhieu
+** Last update Thu Mar 17 11:42:54 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -37,6 +37,7 @@ typedef enum		e_keys
 typedef struct		s_start
 {
   int			level;
+  char			*name;
   char			**keys;
   int			row;
   int			col;
@@ -179,7 +180,7 @@ int	disp(t_program *, int, int);
 */
 
 void	padding_tab(t_program *, int **);
-void	score(t_tet *);
+void	score(t_program *, t_tet *);
 void	size_file(t_tet *, int, int);
 
 /*
