@@ -1,11 +1,11 @@
 /*
-1;2802;0c** main.c for main in /home/duhieu_b/System_unix
+** main.c for main in /home/duhieu_b/System_unix
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 16:57:52 2016 benjamin duhieu
-** Last update Thu Mar 17 20:03:10 2016 benjamin duhieu
+** Last update Thu Mar 17 20:21:47 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -31,7 +31,7 @@ int		game_over(t_program *tetris, int y)
   ov(y);
   er(y);
   wrefresh(stdscr);
-  if ((touch = recup_entry()))
+  if ((touch = recup_entry(tetris)))
     if ((recup = is_it_a_key(tetris->start.keys, touch)) == 4)
       return (1);
   return (0);

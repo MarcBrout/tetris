@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 11:04:39 2016 marc brout
-** Last update Thu Mar 17 15:14:53 2016 marc brout
+** Last update Thu Mar 17 17:44:29 2016 marc brout
 */
 
 #include <sys/types.h>
@@ -77,6 +77,8 @@ int		load_high_scores(t_program *tetris)
       i += 1;
       free(str);
     }
+  while ((str = get_next_line(fd)))
+    free(str);
   tri_high_scores(tetris);
   return (1);
 }

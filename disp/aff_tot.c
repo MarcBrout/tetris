@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 20:17:59 2016 benjamin duhieu
+** Last update Thu Mar 17 20:22:13 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -152,7 +152,7 @@ int		key_pause(t_program *tetris, UNUSED t_tetrimino *tet)
     return (-1);
   while (42)
     {
-      if ((touch = recup_entry()))
+      if ((touch = recup_entry(tetris)))
 	if ((recup = is_it_a_key(tetris->start.keys, touch)) == 5)
 	  break ;
     }
@@ -219,7 +219,7 @@ int	game(t_program *tetris, t_tetrimino *tet)
   werase(tetris->tet.board.game);
   wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
   init_tab(key_tab);
-  if ((touch = recup_entry()))
+  if ((touch = recup_entry(tetris)))
     if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
       if (key_tab[recup](tetris, tet))
 	return (-1);

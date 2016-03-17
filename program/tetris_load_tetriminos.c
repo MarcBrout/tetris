@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:27:16 2016 marc brout
-** Last update Sat Mar  5 19:14:18 2016 marc brout
+** Last update Thu Mar 17 18:52:27 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -117,6 +117,7 @@ t_tetrimino		*get_tetrimino(const char *file)
     return (my_puterror_null(FILE_ERR));
   free(path);
   tmino->working = 1;
+  tmino->rot = 0;
   if (check_file(file, tmino, fd))
     return (my_puterror_null(MALLOC_ERR));
   if (fd > 2)

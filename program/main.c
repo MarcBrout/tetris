@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Thu Mar 17 17:19:27 2016 benjamin duhieu
+** Last update Thu Mar 17 20:02:05 2016 marc brout
 */
 
 #include <curses.h>
@@ -75,7 +75,6 @@ int		show_start(t_start *start, t_program *prog)
 
 int		launch_tetris(t_program *prog)
 {
-
   int		ret;
 
   prog->start.hide = 1;
@@ -90,6 +89,9 @@ int		launch_tetris(t_program *prog)
     return (1);
   prog->nb_tminos -= ret;
   prog->piece = 0;
+  prog->start.maxl = get_max_key_len(prog);
+  if (!(prog->start.key = malloc(prog->start.maxl + 1)))
+    return (1);
   if (my_disp(prog))
     return (1);
   if (save_high_scores(prog))

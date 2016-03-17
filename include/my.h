@@ -1,11 +1,11 @@
 /*
 ** my.h for my in ~/dev/piscine/PJ9/include
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Thu Oct  8 11:23:34 2015 marc brout
-** Last update Wed Jan 13 04:06:27 2016 marc brout
+** Last update Mon Mar 14 18:55:02 2016 marc brout
 */
 
 #ifndef MY_H_
@@ -13,6 +13,7 @@
 
 #include <stdarg.h>
 #include <stdlib.h>
+#define UNUSED __attribute__((__unused__))
 
 typedef int (**t_ptrftab)(va_list, char, const char *, int);
 

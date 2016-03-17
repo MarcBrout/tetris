@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 20:04:33 2016 benjamin duhieu
+** Last update Thu Mar 17 20:21:13 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -40,6 +40,8 @@ typedef struct		s_start
   char			*name;
   char			**keys;
   char			keyalloc[6];
+  char			*key;
+  int			maxl;
   int			row;
   int			col;
   int			hide;
@@ -56,6 +58,7 @@ typedef struct		s_tetrimino
   int			width;
   int			height;
   int			color;
+  int			rot;
   struct s_tetrimino	*next;
 }			t_tetrimino;
 
@@ -91,6 +94,30 @@ typedef struct		s_program
   struct termios        oldt;
   struct termios	newt;
 }			t_program;
+
+
+/*
+** get_max_key_len.c
+*/
+
+int	get_max_key_len(t_program *tetris);
+
+/*
+** rotate.c
+*/
+
+void	rotate_piece(t_tetrimino *tmino, int max);
+void	copy_tab_for_rotation(t_tetrimino *tmino);
+void	set_piece(t_tetrimino *tmino);
+
+/*
+** replace_high_scores.c
+*/
+
+int	is_high_score(t_program *tetris, int score);
+void	replace_high_scores(t_program *tetris,
+			    char *name,
+			    int score);
 
 /*
 ** tri.c
@@ -268,7 +295,7 @@ int	keypause(t_start *start, char **av, int *i, char arg);
 ** recup_env.c
 */
 
-char	*recup_entry();
+char	*recup_entry(t_program *tetris);
 int	is_it_a_key(char **keys, char *input);
 int	set_no_canonique_no_wait(struct termios *oldt,
 				 struct termios *newt);

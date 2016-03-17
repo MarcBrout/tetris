@@ -1,16 +1,17 @@
 /*
 ** my_put_nbr.c for my_put_nbr in ~/rendu/Piscine_C_J10
-** 
+**
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
-** 
+**
 ** Started on  Mon Oct 12 19:37:45 2015 marc brout
-** Last update Sat Oct 17 22:59:13 2015 marc brout
+** Last update Mon Mar 14 18:20:44 2016 marc brout
 */
+
+#include "my.h"
 
 int	my_put_nbr(int nb)
 {
-  int	unit;
   int	power;
   int	stock;
 

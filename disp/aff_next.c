@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Thu Mar 17 20:20:29 2016 benjamin duhieu
+** Last update Thu Mar 17 20:22:36 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -101,7 +101,8 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	      elem = elem->next;
 	      choose_tet--;
 	    }
-	  tetris->cur = elem;
+
+	  ;tetris->cur = elem;
 	}
       else if (*next == 0)
 	bol = 1;

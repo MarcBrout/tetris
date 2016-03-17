@@ -1,12 +1,11 @@
 /*
-
 ** recup_env.c for tetris in /home/brout_m/RENDU/PSU/PSU_2015_tetris
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Sat Mar  5 15:29:25 2016 marc brout
-** Last update Wed Mar 16 17:51:48 2016 benjamin duhieu
+** Last update Thu Mar 17 20:14:13 2016 marc brout
 */
 
 #include <term.h>
@@ -32,26 +31,15 @@ int	my_set_term()
   return (0);
 }
 
-char	*recup_entry()
+char	*recup_entry(t_program *tetris)
 {
-  char	*tmp;
-  char	c;
-  int	i;
-
-  if (!(tmp = malloc(1)))
+  my_bzero(tetris->start.key, tetris->start.maxl + 1);
+  if (read(0, tetris->start.key, tetris->start.maxl) <= 0)
     return (NULL);
-  tmp[0] = 0;
-  i = 0;
-  while (read(0, &c, 1) > 0)
-    {
-      if (!(tmp = my_realloc(tmp, i + 1)))
-	return (NULL);
-      tmp[i] = c;
-      i += 1;
-    }
-  if (!tmp[0])
+  flushinp();
+  if (!tetris->start.key[0])
     return (NULL);
-  return (tmp);
+  return (tetris->start.key);
 }
 
 int	is_it_a_key(char **keys, char *input)
@@ -75,7 +63,7 @@ int	set_no_canonique_no_wait(struct termios *oldt,
   newt->c_lflag &= ~ICANON;
   newt->c_lflag &= ~ECHO;
   newt->c_cc[VMIN] = 0;
-  newt->c_cc[VTIME] = 0;
+  newt->c_cc[VTIME] = 1;
   if (ioctl(0, TCSETS, newt) < 0)
     return (1);
   return (0);
