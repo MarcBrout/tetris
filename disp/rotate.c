@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:55:54 2016 marc brout
-** Last update Thu Mar 17 18:54:14 2016 marc brout
+** Last update Thu Mar 17 20:57:38 2016 marc brout
 */
 
 #include "program.h"
@@ -18,7 +18,6 @@ void		rotate_piece(t_tetrimino *tmino, int max)
   int		y;
   int		i;
   int		j;
-
 
   x = 0;
   j = 0;
@@ -64,5 +63,8 @@ void		set_piece(t_tetrimino *tmino)
   max = (tmino->width > tmino->height) ? tmino->width : tmino->height;
   i = 0;
   while (i < tmino->rot)
-    rotate_piece(tmino, max);
+    {
+      rotate_piece(tmino, max);
+      i += 1;
+    }
 }
