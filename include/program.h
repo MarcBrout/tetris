@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Wed Mar 16 17:46:52 2016 benjamin duhieu
+** Last update Thu Mar 17 13:01:24 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -49,6 +49,8 @@ typedef struct		s_tetrimino
   const char		*name;
   int			working;
   int			**tmino;
+  int			**tmino_aff;
+  int			**tmino_rot;
   int			width;
   int			height;
   int			color;
@@ -65,9 +67,17 @@ typedef struct		s_args
   struct s_args		*next;
 }			t_args;
 
+typedef struct		s_hscore
+{
+  char			*name;
+  int			score;
+}			t_hscore;
+
 typedef struct		s_program
 {
   t_start		start;
+  char			hs;
+  t_hscore		hscore[10];
   t_tetrimino		*tminos;
   t_tetrimino		*cur;
   t_tetrimino		*first;
@@ -247,5 +257,20 @@ int	set_no_canonique_no_wait(struct termios *oldt,
 				 struct termios *newt);
 int	reset_terminal_to_default(struct termios *oldt);
 int	my_set_term();
+
+/*
+** temp_tetriminos.c
+*/
+
+int	init_rotation_tabs(t_tetrimino *);
+void	copy_rotation_tabs(t_tetrimino *);
+void	my_bzero(void *, int);
+
+/*
+** get_high_scores.c
+*/
+
+void	init_high_scores(t_program *);
+int	load_high_scores(t_program *);
 
 #endif /* !PROGRAM_H_ */

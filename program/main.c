@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Wed Mar 16 18:33:07 2016 marc brout
+** Last update Thu Mar 17 12:53:23 2016 marc brout
 */
 
 #include <curses.h>
@@ -74,14 +74,19 @@ int		show_start(t_start *start, t_program *prog)
 
 int		launch_tetris(t_program *prog)
 {
+  int		ret;
+
   prog->start.hide = 1;
   if (!(prog->tminos =
 	load_tetriminos("./tetriminos", &prog->nb_tminos)))
     return (1);
+  prog->hs = load_high_scores(prog);
   tri_tetriminos(prog->tminos);
   if (prog->start.debug)
     show_start(&prog->start, prog);
-  purify_tetriminos(prog->tminos);
+  if ((ret = purify_tetriminos(prog->tminos)) < 0)
+    return (1);
+  prog->nb_tminos -= ret;
   prog->piece = 0;
   my_disp(prog);
   free_list(prog->tminos);
