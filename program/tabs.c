@@ -5,12 +5,30 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Wed Mar 16 18:22:29 2016 marc brout
+** Last update Thu Mar 17 16:56:33 2016 marc brout
 */
 
 #include <stdio.h>
 #include "get_next_line.h"
 #include "program.h"
+
+void			free_args(t_args *rootarg)
+{
+  t_args		*tmp;
+  t_args		*tmp2;
+
+  tmp = rootarg->next;
+  while (tmp)
+    {
+      tmp2 = tmp->next;
+      if (tmp->arg)
+	free(tmp->arg);
+      if (tmp->long_arg)
+	free(tmp->long_arg);
+      free(tmp);
+      tmp = tmp2;
+    }
+}
 
 int			**array(t_tetrimino *tmino)
 {

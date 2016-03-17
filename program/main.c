@@ -5,10 +5,11 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 marc brout
-** Last update Thu Mar 17 12:53:23 2016 marc brout
+** Last update Thu Mar 17 17:08:41 2016 marc brout
 */
 
 #include <curses.h>
+#include <term.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include "program.h"
@@ -74,6 +75,7 @@ int		show_start(t_start *start, t_program *prog)
 
 int		launch_tetris(t_program *prog)
 {
+
   int		ret;
 
   prog->start.hide = 1;
@@ -88,13 +90,18 @@ int		launch_tetris(t_program *prog)
     return (1);
   prog->nb_tminos -= ret;
   prog->piece = 0;
-  my_disp(prog);
+  /* my_disp(prog); */
+  if (save_high_scores(prog))
+    return (1);
+  free_keys(prog);
+  free_high_score(prog);
   free_list(prog->tminos);
   return (0);
 }
 
 int		main(int ac, char **av,char **env)
 {
+  TERMINAL	*term;
   t_program	prog;
   int		ret;
 
@@ -105,6 +112,8 @@ int		main(int ac, char **av,char **env)
       if ((ret = parse_args(&prog, (const char **)av)))
 	return (ret % 2);
     }
+  term = set_curterm(cur_term);
+  del_curterm(term);
   launch_tetris(&prog);
   return (0);
 }

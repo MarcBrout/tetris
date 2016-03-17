@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 14:00:14 2016 marc brout
-** Last update Wed Mar 16 18:43:36 2016 marc brout
+** Last update Thu Mar 17 16:51:18 2016 marc brout
 */
 
 #include "program.h"
@@ -84,6 +84,7 @@ int		init_start(t_start *start)
   if (my_set_term() == 1)
     return (1);
   start->level = 1;
+  my_bzero(start->keyalloc, 7);
   if (!(start->keys = malloc(sizeof(char *) * 7)) ||
       (start->keys[K_LEFT] = tigetstr("kcub1")) == (char *)-1 ||
       (start->keys[K_RIGHT] = tigetstr("kcuf1")) == (char *)-1 ||
@@ -93,6 +94,8 @@ int		init_start(t_start *start)
       !(start->keys[K_PAUSE] = my_strdup(" ")))
     return (1);
   start->keys[6] = NULL;
+  start->keyalloc[K_QUIT] = 1;
+  start->keyalloc[K_PAUSE] = 1;
   start->row = 20;
   start->col = 10;
   start->hide = 0;
@@ -120,5 +123,6 @@ int		parse_args(t_program *prog, const char **av)
 	}
       i += 1;
     }
+  free_args(&root);
   return (0);
 }
