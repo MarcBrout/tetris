@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 17:19:44 2016 benjamin duhieu
+** Last update Thu Mar 17 17:52:20 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -91,6 +91,14 @@ typedef struct		s_program
   struct termios        oldt;
   struct termios	newt;
 }			t_program;
+
+/*
+** replace_high_scores.c
+*/
+
+void	replace_high_scores(t_program *tetris,
+			    char *name,
+			    int score);
 
 /*
 ** tri.c

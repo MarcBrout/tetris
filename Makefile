@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Thu Mar 17 12:55:37 2016 marc brout
+## Last update Thu Mar 17 17:52:41 2016 marc brout
 ##
 
 SRCD		=	disp/
@@ -35,7 +35,8 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCP)help.c \
 			$(SRCP)recup_env.c \
 			$(SRCP)temp_tetriminos.c \
-			$(SRCP)get_high_scores.c
+			$(SRCP)get_high_scores.c \
+			$(SRCP)replace_high_scores.c
 
 OBJS    	=	$(SRC:.c=.o)
 
