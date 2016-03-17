@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:37:03 2016 benjamin duhieu
-** Last update Thu Mar 17 16:27:50 2016 benjamin duhieu
+** Last update Thu Mar 17 19:53:45 2016 benjamin duhieu
 
 */
 
@@ -51,7 +51,6 @@ int		create_win(t_program *tet, t_tet *tetris, int xmax, int ymax)
   getmaxyx(stdscr, tetris->height, tetris->width);
   tetris->board.x_max = tet->start.col + 2;
   tetris->board.y_max = tet->start.row + 2;
-  printf("----------------------------------------------------------------------\n");
   if ((tetris->board.game = newwin(tetris->board.y_max, tetris->board.x_max,
   				   1, 30)) == NULL)
     return (my_puterror("Error : Can't create the board window\n", 1));

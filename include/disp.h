@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 20:06:03 2016 benjamin duhieu
-** Last update Thu Mar 17 11:43:14 2016 benjamin duhieu
+** Last update Thu Mar 17 20:03:18 2016 benjamin duhieu
 */
 
 #ifndef DISP_H_
@@ -48,6 +48,7 @@ typedef	struct	s_tet
   t_game	board;
   t_game	score;
   t_game	next;
+  t_game	over;
   t_score	play;
   t_tab		game;
   int		height;

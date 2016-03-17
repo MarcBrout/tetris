@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 20:00:26 2016 marc brout
+** Last update Thu Mar 17 20:21:13 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -173,6 +173,16 @@ int	my_puterror(const char *str, int error);
 void	*my_puterror_null(const char *str);
 
 /*
+** game_over : game_over.c
+*/
+
+void	tab_score(t_program * );
+void	ga(int);
+void	me(int);
+void	ov(int);
+void	er(int);
+
+/*
 ** misc : misc.c , my_getnbr.c
 */
 
@@ -215,7 +225,7 @@ int	malloc_next(t_tet *, int, int);
 ** aff_tot.c
 */
 
-int	game_over(t_program *, int, int);
+int	game_over(t_program *, int);
 int	disp(t_program *, int, int);
 
 /*
