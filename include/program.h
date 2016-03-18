@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 15:38:41 2016 marc brout
+** Last update Fri Mar 18 16:43:38 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -96,6 +96,7 @@ typedef struct		s_program
   struct termios	newt;
 }			t_program;
 
+
 /*
 ** get_max_key_len.c
 */
@@ -176,7 +177,7 @@ void	*my_puterror_null(const char *str);
 ** game_over : game_over.c
 */
 
-void	tab_score(t_program *);
+void	tab_score(t_program * );
 void	ga(int);
 void	me(int);
 void	ov(int);
@@ -218,6 +219,7 @@ int	create_win(t_program *, t_tet *, int, int);
 ** tab_game.c
 */
 
+void	padding_tab(t_program *, int **);
 int	malloc_game(t_program *, t_tet *);
 int	malloc_next(t_tet *, int, int);
 
@@ -225,14 +227,16 @@ int	malloc_next(t_tet *, int, int);
 ** aff_tot.c
 */
 
-int	game_over(t_program *, int);
+int	draw(t_program *, time_t);
+int	game(t_program *, t_tetrimino *);
 int	disp(t_program *, int, int);
+int	the_game(t_program *, time_t, int);
 
 /*
 ** aff_score.c
 */
 
-void	padding_tab(t_program *, int **);
+void	change_score(t_program *, time_t, time_t);
 void	score(t_program *, t_tet *);
 void	size_file(t_tet *, int, int);
 
@@ -241,12 +245,59 @@ void	size_file(t_tet *, int, int);
 */
 
 t_tetrimino	*next_form(t_program *, int *);
+void	aff_next(t_program *);
+void	erase_next(t_program *);
+void	put_to_next(t_program *, t_tetrimino *);
+
+/*
+** aff_tetris.c
+*/
+
+void	text_end();
+void	text_next();
+void	text();
+
+/*
+** chk_board.c
+*/
+
+int	line_completed(t_program *, t_tetrimino *, t_pos *);
+void	init_tab(int (*key_tab[6])(t_program *, t_tetrimino *));
+void	new_tab(int **, int);
+void	put_to_board(t_program *, t_tetrimino *, t_pos *);
+
+
+/*
+** game_over.c
+*/
+
+void	put_score(t_program *, char *, int, int);
+void	size_over(t_program *, int, int, int);
+void	tab_score(t_program *);
 
 /*
 ** disp.c
 */
 
+int	game_over(t_program *, int);
 int	my_disp(t_program *);
+
+/*
+** disp_over.c
+*/
+
+void	ga(int);
+void	me(int);
+void	ov(int);
+void	er(int);
+
+/*
+** display.c
+*/
+
+void	display_to_board(t_program *);
+void	display_move_piece(t_program *, t_tetrimino *, t_pos *);
+void	display_piece(t_program *, t_tetrimino *);
 
 /*
 ** option.c

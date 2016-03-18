@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:12:17 2016 benjamin duhieu
-** Last update Fri Mar 18 16:16:07 2016 benjamin duhieu
+** Last update Fri Mar 18 16:38:50 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -13,7 +13,6 @@
 #include <unistd.h>
 #include "my.h"
 #include "program.h"
-
 
 void		display_to_board(t_program *tetris)
 {
