@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 16:48:33 2016 marc brout
+** Last update Fri Mar 18 17:08:12 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -174,10 +174,9 @@ int	my_puterror(const char *str, int error);
 void	*my_puterror_null(const char *str);
 
 /*
-** game_over : game_over.c
+** disp game over : disp_over.c
 */
 
-void	tab_score(t_program * );
 void	ga(int);
 void	me(int);
 void	ov(int);
@@ -219,8 +218,8 @@ int	create_win(t_program *, t_tet *, int, int);
 ** tab_game.c
 */
 
-void	padding_tab(t_program *tet, int **tab);
-void	padding_next(int **tab, int ymax, int xmax);
+void	padding_tab(t_program *, int **);
+void	padding_next(int **, int, int);
 int	malloc_game(t_program *, t_tet *);
 int	malloc_next(t_tet *, int, int);
 
@@ -272,9 +271,9 @@ void	put_to_board(t_program *, t_tetrimino *, t_pos *);
 ** game_over.c
 */
 
+void	tab_score(t_program * );
 void	put_score(t_program *, char *, int, int);
 void	size_over(t_program *, int, int, int);
-void	tab_score(t_program *);
 
 /*
 ** disp.c
@@ -282,15 +281,6 @@ void	tab_score(t_program *);
 
 int	game_over(t_program *, int);
 int	my_disp(t_program *);
-
-/*
-** disp_over.c
-*/
-
-void	ga(int);
-void	me(int);
-void	ov(int);
-void	er(int);
 
 /*
 ** display.c
@@ -401,13 +391,14 @@ int	move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit);
 int	key_quit(t_program *tetris, t_tetrimino *tet);
 
 /*
-** key_function.c
+** key_function.c && key_function_next.c
 */
 
-int	key_right(t_program *tetris, t_tetrimino *tet);
-int	key_left(t_program *tetris, t_tetrimino *tet);
-int	key_drop(t_program *tetris, t_tetrimino *tet);
-int	key_pause(t_program *tetris, t_tetrimino *tet);
-int	key_turn(t_program *tetris, t_tetrimino *tet);
+int	ky_right(t_program *, t_tetrimino *);
+int	ky_left(t_program *, t_tetrimino *);
+int	ky_drop(t_program *, t_tetrimino *);
+int	ky_pause(t_program *, t_tetrimino *);
+int	ky_turn(t_program *, t_tetrimino *);
+int	ky_quit(t_program *, t_tetrimino *);
 
 #endif /* !PROGRAM_H_ */
