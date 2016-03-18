@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Thu Mar 17 21:08:54 2016 benjamin duhieu
+** Last update Fri Mar 18 11:16:50 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -128,7 +128,7 @@ void		swap_tetriminos(t_tetrimino *current,
 				t_tetrimino *current_prev,
 				t_tetrimino *target);
 void		tri_tetriminos(t_tetrimino *root);
-int		purify_tetriminos(t_tetrimino *root);
+int		purify_tetriminos(t_tetrimino *root, t_program *tetris);
 
 /*
 ** Debug : debug.c

@@ -5,12 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:55:54 2016 marc brout
-** Last update Thu Mar 17 21:25:15 2016 marc brout
+** Last update Thu Mar 17 22:55:59 2016 marc brout
 */
 
 #include "program.h"
-
-
+#include "my.h"
+#include <unistd.h>
 
 void		rotate_piece(t_tetrimino *tmino, int max)
 {
@@ -42,12 +42,15 @@ void		copy_tab_for_rotation(t_tetrimino *tmino)
   int		y;
 
   y = 0;
-  while (y < tmino->height)
+  while (y < tmino->size_max)
     {
       x = 0;
-      while (x < tmino->width)
+      while (x < tmino->size_max)
 	{
-	  tmino->tmino_aff[y][x] = tmino->tmino[y][x];
+	  if (x < tmino->width && y < tmino->height)
+	    tmino->tmino_aff[y][x] = tmino->tmino[y][x];
+	  else
+	    tmino->tmino_aff[y][x] = 0;
 	  x += 1;
 	}
       y += 1;
@@ -60,10 +63,10 @@ void		copy_rotation_to_tab(t_tetrimino *tmino)
   int		y;
 
   y = 0;
-  while (y < tmino->height)
+  while (y < tmino->size_max)
     {
       x = 0;
-      while (x < tmino->width)
+      while (x < tmino->size_max)
 	{
 	  tmino->tmino_aff[y][x] = tmino->tmino_rot[y][x];
 	  x += 1;
@@ -78,12 +81,15 @@ void		set_piece(t_tetrimino *tmino)
   int		max;
 
   copy_tab_for_rotation(tmino);
-  max = (tmino->width > tmino->height) ? tmino->width : tmino->height;
-  i = 0;
-  while (i < tmino->rot)
+  if (tmino->rot % 4)
     {
-      rotate_piece(tmino, max);
-      i += 1;
+      max = tmino->size_max;
+      i = 0;
+      while (i < (tmino->rot % 4))
+	{
+	  rotate_piece(tmino, max);
+	  copy_rotation_to_tab(tmino);
+	  i += 1;
+	}
     }
-  copy_rotation_to_tab(tmino);
 }

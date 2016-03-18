@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Thu Mar 17 20:22:36 2016 benjamin duhieu
+** Last update Thu Mar 17 22:57:46 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -121,6 +121,7 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
 	    return (NULL);
 	  tetris->first = tetris->cur;
+	  tetris->first->rot = 0;
 	  elem = tetris->tminos;
 	  choose_tet = rand() % tetris->nb_tminos;
 	  while (choose_tet >= 0 && elem->next != NULL)

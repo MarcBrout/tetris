@@ -1,11 +1,11 @@
 /*
-1;2802;0c** aff_tot.c for tot in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
+** aff_tot.c for tot in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Thu Mar 17 21:21:17 2016 benjamin duhieu
+** Last update Fri Mar 18 14:21:05 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -142,7 +142,7 @@ int	key_quit(UNUSED t_program *tetris, UNUSED t_tetrimino *tet)
 
 int	key_turn(UNUSED t_program *tetris, t_tetrimino *tet)
 {
-  tet->rot = (tet->rot + 1) % 3;
+  tet->rot = (tet->rot + 1);
   set_piece(tet);
   return (0);
 }
@@ -202,7 +202,8 @@ int	line_completed(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   while (++i < tet->size_max)
     {
       j = 0;
-      while (tetris->tet.game.board[posit->y + i][++j] > 0);
+      while ((posit->y + i) < tetris->start.row &&
+	     tetris->tet.game.board[posit->y + i][++j] > 0);
       if (j == tetris->start.col + 1)
 	{
 	  tetris->tet.play.line++;
@@ -224,11 +225,6 @@ int	game(t_program *tetris, t_tetrimino *tet)
   werase(tetris->tet.board.game);
   wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
   init_tab(key_tab);
-  set_piece(tet);
-  if ((touch = recup_entry(tetris)))
-    if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
-      if (key_tab[recup](tetris, tet))
-	return (-1);
   if (!tetris->piece)
     {
       init_piece(tetris, tet, &tetris->posit);
@@ -236,6 +232,11 @@ int	game(t_program *tetris, t_tetrimino *tet)
     }
   else if (tetris->piece == 1)
     {
+      set_piece(tet);
+      if ((touch = recup_entry(tetris)))
+	if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
+	  if (key_tab[recup](tetris, tet))
+	    return (-1);
       if (move_piece(tetris, tet, &tetris->posit))
 	{
 	  tetris->posit.y--;
