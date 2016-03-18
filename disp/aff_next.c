@@ -5,11 +5,12 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Thu Mar 17 20:22:36 2016 benjamin duhieu
+** Last update Fri Mar 18 14:19:40 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
 #include <curses.h>
+#include <stdbool.h>
 #include "program.h"
 #include "my.h"
 
@@ -71,10 +72,60 @@ void	erase_next(t_program *tetris)
     }
 }
 
-t_tetrimino	*next_form(t_program *tetris, int *next)
+void		my_random_first(t_program *tetris)
 {
   t_tetrimino	*elem;
-  static char	bol = 0;
+  int		choose_tet;
+
+  elem = tetris->tminos;
+  choose_tet = rand() % tetris->nb_tminos;
+  while (choose_tet >= 0 && elem->next != NULL)
+    {
+      elem = elem->next;
+      choose_tet--;
+    }
+  tetris->first = elem;
+}
+
+void		my_random_cur(t_program *tetris)
+{
+  t_tetrimino	*elem;
+  int		choose_tet;
+
+  elem = tetris->tminos;
+  choose_tet = rand() % tetris->nb_tminos;
+  while (choose_tet >= 0 && elem->next != NULL)
+    {
+      elem = elem->next;
+      choose_tet--;
+    }
+  tetris->cur = elem;
+}
+
+int		first_piece(t_program *tetris)
+{
+  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
+    return (1);
+  my_random_first(tetris);
+  my_random_cur(tetris);
+  return (0);
+}
+
+int		other_piece(t_program *tetris)
+{
+  erase_next(tetris);
+  free(tetris->first);
+  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
+    return (1);
+  tetris->first = tetris->cur;
+  my_random_cur(tetris);
+  return (0);
+}
+
+t_tetrimino	*next_form(t_program *tetris, int *next)
+{
+  static bool	bol = false;
+  t_tetrimino	*elem;
   int		choose_tet;
 
   werase(tetris->tet.next.game);
@@ -86,6 +137,8 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	{
 	  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
 	    return (NULL);
+	  /* if (first_piece(tetris)) */
+	  /*   return (NULL); */
 	  elem = tetris->tminos;
 	  choose_tet = rand() % tetris->nb_tminos;
 	  while (choose_tet >= 0 && elem->next != NULL)
@@ -101,26 +154,28 @@ t_tetrimino	*next_form(t_program *tetris, int *next)
 	      elem = elem->next;
 	      choose_tet--;
 	    }
-
-	  ;tetris->cur = elem;
+	  tetris->cur = elem;
 	}
       else if (*next == 0)
-	bol = 1;
+	bol = true;
       if (!bol)
 	{
 	  put_to_next(tetris, tetris->cur);
 	  return (tetris->first);
 	}
     }
-  if (bol == 1)
+  if (bol)
     {
       if (!*next)
 	{
+	/* if ((other_piece(tetris))) */
+	/*   return (NULL); */
 	  erase_next(tetris);
 	  free(tetris->first);
 	  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
 	    return (NULL);
 	  tetris->first = tetris->cur;
+	  tetris->first->rot = 0;
 	  elem = tetris->tminos;
 	  choose_tet = rand() % tetris->nb_tminos;
 	  while (choose_tet >= 0 && elem->next != NULL)
