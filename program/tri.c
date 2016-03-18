@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Mar  1 13:33:50 2016 marc brout
-** Last update Fri Mar 18 15:04:30 2016 marc brout
+** Last update Fri Mar 18 17:07:59 2016 marc brout
 */
 
 #include "program.h"
@@ -36,7 +36,8 @@ void			tri_tetriminos(t_tetrimino *root)
       tri = 0;
       while (first && first->next)
 	{
-	  if (my_strcmp((char *)first->name, (char *)first->next->name) > 0)
+	  if (my_strcmp((char *)first->name, (char *)first->next->name)
+	      > 0)
 	    {
 	      swap_tetriminos(first, prec, first->next);
 	      tri = 1;
