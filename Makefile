@@ -5,7 +5,7 @@
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Fri Mar 18 17:02:21 2016 benjamin duhieu
+## Last update Fri Mar 18 17:13:42 2016 benjamin duhieu
 ##
 
 SRCD		=	disp/
@@ -25,7 +25,6 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCD)key_function.c \
 			$(SRCD)key_function_next.c \
 			$(SRCD)rotate.c \
-			$(SRCD)tab_game.c \
 			$(SRCD)chk_board.c \
 			$(SRCD)verif.c \
 			$(SRCD)rand_next.c \
@@ -48,7 +47,6 @@ SRC     	=	$(SRCD)disp.c \
 			$(SRCP)temp_tetriminos.c \
 			$(SRCP)get_high_scores.c \
 			$(SRCP)replace_high_scores.c \
-			$(SRCD)rotate.c \
 			$(SRCP)get_max_key_len.c \
 
 OBJS    	=	$(SRC:.c=.o)
