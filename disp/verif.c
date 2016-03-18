@@ -5,11 +5,12 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:09:20 2016 benjamin duhieu
-** Last update Fri Mar 18 16:41:33 2016 marc brout
+** Last update Fri Mar 18 17:04:23 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
 #include <curses.h>
+#include <time.h>
 #include "program.h"
 
 int	init_game(t_program *tetris, int x_max, int y_max, time_t init)

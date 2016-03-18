@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:13:52 2016 benjamin duhieu
-** Last update Fri Mar 18 16:16:25 2016 benjamin duhieu
+** Last update Fri Mar 18 16:59:31 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -61,12 +61,12 @@ void	put_to_board(t_program *tetris, t_tetrimino *tet, t_pos *posit)
 
 void	init_tab(int (*key_tab[6])(t_program *, t_tetrimino *))
 {
-  key_tab[K_LEFT] = &key_left;
-  key_tab[K_RIGHT] = &key_right;
-  key_tab[K_TURN] = &key_turn;
-  key_tab[K_DROP] = &key_drop;
-  key_tab[K_QUIT] = &key_quit;
-  key_tab[K_PAUSE] = &key_pause;
+  key_tab[K_LEFT] = &ky_left;
+  key_tab[K_RIGHT] = &ky_right;
+  key_tab[K_TURN] = &ky_turn;
+  key_tab[K_DROP] = &ky_drop;
+  key_tab[K_QUIT] = &ky_quit;
+  key_tab[K_PAUSE] = &ky_pause;
 }
 
 void	new_tab(int **tab, int i)

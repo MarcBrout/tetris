@@ -5,12 +5,13 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:00:12 2016 benjamin duhieu
-** Last update Fri Mar 18 16:41:05 2016 marc brout
+** Last update Fri Mar 18 17:02:58 2016 benjamin duhieu
 */
 
+#include <time.h>
 #include "program.h"
 
-int	key_right(t_program *tetris, t_tetrimino *tet)
+int	ky_right(t_program *tetris, t_tetrimino *tet)
 {
   tetris->posit.x++;
   if (move_piece(tetris, tet, &tetris->posit))
@@ -24,7 +25,7 @@ int	key_right(t_program *tetris, t_tetrimino *tet)
   return (0);
 }
 
-int	key_left(t_program *tetris, t_tetrimino *tet)
+int	ky_left(t_program *tetris, t_tetrimino *tet)
 {
   tetris->posit.x--;
   if (move_piece(tetris, tet, &tetris->posit))
@@ -38,14 +39,14 @@ int	key_left(t_program *tetris, t_tetrimino *tet)
   return (0);
 }
 
-int	key_drop(t_program *tetris, t_tetrimino *tet)
+int	ky_drop(t_program *tetris, t_tetrimino *tet)
 {
   while (!(move_piece(tetris, tet, &tetris->posit)))
     tetris->posit.y++;
   return (0);
 }
 
-int	key_turn(t_program *tetris, t_tetrimino *tet)
+int	ky_turn(t_program *tetris, t_tetrimino *tet)
 {
   tet->rot = (tet->rot + 1);
   set_piece(tet);
@@ -57,7 +58,7 @@ int	key_turn(t_program *tetris, t_tetrimino *tet)
   return (0);
 }
 
-int		key_pause(t_program *tetris, UNUSED t_tetrimino *tet)
+int		ky_pause(t_program *tetris, UNUSED t_tetrimino *tet)
 {
   int		recup;
   time_t	tmp;
