@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:42:55 2016 benjamin duhieu
-** Last update Fri Mar 18 17:14:02 2016 marc brout
+** Last update Fri Mar 18 17:39:13 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -17,19 +17,19 @@ void	padding_tab(t_program *tet, int **tab)
   int	j;
 
   i = -1;
-  while (tab && ++i < tet->start.row  && tab[i])
+  while (tab && ++i < tet->start.row && tab[i])
     {
       j = -1;
-      while (++j < tet->start.col + 1)
+      while (++j < tet->start.col + 2)
 	{
-	  if (j > 0 && j < tet->start.col)
+	  if (j > 0 && j < tet->start.col + 1)
 	    tab[i][j] = 0;
 	  else
 	    tab[i][j] = -1;
 	}
     }
   j = -1;
-  while (tab && ++j < tet->start.col + 1)
+  while (tab && ++j < tet->start.col + 2)
     tab[i][j] = -1;
 }
 
@@ -57,14 +57,15 @@ int	malloc_game(t_program *tet, t_tet *tetris)
   int	i;
 
   if ((tetris->game.board = malloc(sizeof(int *) *
-				   (tet->start.row + 3))) == NULL)
+				   (tet->start.row + 2))) == NULL)
     return (1);
-  tetris->game.board[tet->start.row + 2] = NULL;
+  tetris->game.board[tet->start.row + 1] = NULL;
   i = -1;
   while (++i < tet->start.row + 1)
     {
       if ((tetris->game.board[i] = malloc(sizeof(int) *
-					  tet->start.col + 3)) == NULL)
+					  (tet->start.col + 3))) ==
+	  NULL)
 	return (1);
     }
   padding_tab(tet, tetris->game.board);

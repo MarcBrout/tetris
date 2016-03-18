@@ -5,13 +5,14 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Fri Mar 18 16:19:10 2016 benjamin duhieu
+** Last update Fri Mar 18 18:09:05 2016 marc brout
 */
 
 #include <ncurses.h>
 #include <curses.h>
 #include <unistd.h>
 #include <time.h>
+#include <stdio.h>
 #include "program.h"
 #include "my.h"
 

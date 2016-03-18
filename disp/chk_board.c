@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:13:52 2016 benjamin duhieu
-** Last update Fri Mar 18 16:59:31 2016 benjamin duhieu
+** Last update Fri Mar 18 18:25:38 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -27,7 +27,7 @@ int	line_completed(t_program *tetris, t_tetrimino *tet, t_pos *posit)
   while (++i < tet->size_max)
     {
       j = 0;
-      while ((posit->y + i) < tetris->start.row &&
+      while ((posit->y + i) < (tetris->start.row + 1) &&
 	     tetris->tet.game.board[posit->y + i][++j] > 0);
       if (j == tetris->start.col + 1)
 	{

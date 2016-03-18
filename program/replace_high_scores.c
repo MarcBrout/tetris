@@ -5,9 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:45:37 2016 marc brout
-** Last update Fri Mar 18 17:10:13 2016 marc brout
+** Last update Fri Mar 18 18:09:23 2016 marc brout
 */
 
+#include <stdio.h>
 #include "program.h"
 
 int	is_high_score(t_program *tetris, int score)
