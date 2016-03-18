@@ -1,11 +1,11 @@
 /*
-** options.c for tetris in /home/brout_m/RENDU/PSU/PSU_2015_tetris/program
+** options.c for tetris in ~/RENDU/PSU/PSU_2015_tetris/program
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 14:00:14 2016 marc brout
-** Last update Thu Mar 17 16:51:18 2016 marc brout
+** Last update Fri Mar 18 17:10:13 2016 marc brout
 */
 
 #include "program.h"

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 11:04:39 2016 marc brout
-** Last update Thu Mar 17 17:44:29 2016 marc brout
+** Last update Fri Mar 18 17:10:14 2016 marc brout
 */
 
 #include <sys/types.h>
@@ -124,7 +124,8 @@ int		save_high_scores(t_program *tetris)
   while (i < 10)
     {
       if (tetris->hscore[i].name)
-	write(fd, tetris->hscore[i].name, my_strlen(tetris->hscore[i].name));
+	write(fd, tetris->hscore[i].name,
+	      my_strlen(tetris->hscore[i].name));
       else
 	write(fd, "UNKNOWN", 7);
       write(fd, "\n", 1);
