@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 11:16:50 2016 marc brout
+** Last update Fri Mar 18 15:38:41 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -96,7 +96,6 @@ typedef struct		s_program
   struct termios	newt;
 }			t_program;
 
-
 /*
 ** get_max_key_len.c
 */
@@ -177,7 +176,7 @@ void	*my_puterror_null(const char *str);
 ** game_over : game_over.c
 */
 
-void	tab_score(t_program * );
+void	tab_score(t_program *);
 void	ga(int);
 void	me(int);
 void	ov(int);
