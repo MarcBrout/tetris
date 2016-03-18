@@ -5,12 +5,11 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:55:54 2016 marc brout
-** Last update Thu Mar 17 22:55:59 2016 marc brout
+** Last update Fri Mar 18 14:25:41 2016 marc brout
 */
 
 #include "program.h"
 #include "my.h"
-#include <unistd.h>
 
 void		rotate_piece(t_tetrimino *tmino, int max)
 {

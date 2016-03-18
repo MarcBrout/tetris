@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 13:15:17 2016 marc brout
-** Last update Wed Mar 16 13:05:49 2016 marc brout
+** Last update Fri Mar 18 15:43:59 2016 marc brout
 */
 
 #include "program.h"
@@ -44,7 +44,7 @@ int		mapsize(t_start *start, char **av,
 int		withoutnext(t_start *start, UNUSED char **av,
 			    UNUSED int *i, UNUSED char arg)
 {
-  start->hide = 0;
+  start->hide = 1;
   return (0);
 }
 

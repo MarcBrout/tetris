@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Mar  1 13:33:50 2016 marc brout
-** Last update Fri Mar 18 11:18:37 2016 marc brout
+** Last update Fri Mar 18 15:04:30 2016 marc brout
 */
 
 #include "program.h"
@@ -47,7 +47,8 @@ void			tri_tetriminos(t_tetrimino *root)
     }
 }
 
-int		purify_tetriminos(t_tetrimino *root, t_program *tetris)
+int		purify_tetriminos(t_tetrimino *root,
+				  t_program *tetris)
 {
   int		nb;
   t_tetrimino	*tmp;

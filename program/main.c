@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 benjamin duhieu
-** Last update Fri Mar 18 14:06:51 2016 marc brout
+** Last update Fri Mar 18 15:37:10 2016 marc brout
 */
 
 #include <curses.h>
@@ -99,7 +99,7 @@ int		launch_tetris(t_program *prog)
   return (0);
 }
 
-int		main(int ac, char **av,char **env)
+int		main(int ac, char **av, char **env)
 {
   t_program	prog;
   int		ret;

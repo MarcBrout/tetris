@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Wed Nov  4 16:57:46 2015 marc brout
-** Last update Mon Mar 14 18:28:17 2016 marc brout
+** Last update Fri Mar 18 15:40:29 2016 marc brout
 */
 
 #include "my.h"
@@ -99,5 +99,5 @@ int	my_print_b(va_list ap,
 		   UNUSED const char *str,
 		   UNUSED int pos)
 {
-  return (my_putnbr_base_un(va_arg(ap,unsigned int), "01"));
+  return (my_putnbr_base_un(va_arg(ap, unsigned int), "01"));
 }

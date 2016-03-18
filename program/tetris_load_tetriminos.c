@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:27:16 2016 marc brout
-** Last update Thu Mar 17 21:11:38 2016 benjamin duhieu
+** Last update Fri Mar 18 15:05:50 2016 marc brout
 */
 
 #include <sys/stat.h>
@@ -67,12 +67,12 @@ int			get_size(const char *firstline,
 
   i = 0;
   tmino->width = my_getnbr_i(&firstline[i], &i);
-  if (firstline[i] != ' ')
+  if (firstline[i++] != ' ')
     tmino->working = 0;
-  tmino->height = my_getnbr_i(&firstline[i], &i);
-  if (firstline[i + 1] != ' ')
+  tmino->height = my_getnbr_i(firstline, &i);
+  if (firstline[i++] != ' ')
     tmino->working = 0;
-  color = my_getnbr_i(&firstline[i], &i);
+  color = my_getnbr_i(firstline, &i);
   if (!tmino->working)
     while ((tmp = get_next_line(fd)))
       free(tmp);
