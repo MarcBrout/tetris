@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:41:16 2016 benjamin duhieu
-** Last update Thu Mar 17 19:50:15 2016 benjamin duhieu
+** Last update Fri Mar 18 16:11:59 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -48,4 +48,17 @@ void	score(t_program *tet, t_tet *tetris)
   mvwprintw(tetris->score.game, 8, 16, "%02d", tetris->play.sec);
 
   mvwprintw(tetris->score.game, 10, 2, "Player:    %s", tet->start.name);
+}
+
+void		change_score(t_program *tetris,
+			     time_t new_time, time_t init)
+{
+  if (tetris->tet.play.score >= 100 * tetris->tet.play.level)
+    tetris->tet.play.level++;
+  if (tetris->tet.play.score >= tetris->tet.play.high_score)
+    tetris->tet.play.high_score = tetris->tet.play.score;
+  tetris->tet.play.sec = (new_time - init) % 60;
+  tetris->tet.play.min = (new_time - init) / 60;
+  score(tetris, &tetris->tet);
+  wrefresh(tetris->tet.score.game);
 }

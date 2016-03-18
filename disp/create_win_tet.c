@@ -5,8 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:37:03 2016 benjamin duhieu
-** Last update Thu Mar 17 19:53:45 2016 benjamin duhieu
-
+** Last update Fri Mar 18 15:57:24 2016 benjamin duhieu
 */
 
 #include <curses.h>

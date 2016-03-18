@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Thu Mar 17 16:56:33 2016 marc brout
+** Last update Fri Mar 18 13:49:59 2016 marc brout
 */
 
 #include <stdio.h>
@@ -68,8 +68,11 @@ int			fill_line(const char *str, int *line,
       i++;
     }
   while (i < my_strlencst(str))
-    if (str[++i] && str[i] != ' ' )
-      return (1);
+    {
+      if (str[i] && str[i] != ' ')
+	return (1);
+      i += 1;
+    }
   return (0);
 }
 

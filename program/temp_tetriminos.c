@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 11:19:44 2016 marc brout
-** Last update Thu Mar 17 12:07:49 2016 marc brout
+** Last update Thu Mar 17 22:08:14 2016 marc brout
 */
 
 #include "program.h"
@@ -49,7 +49,7 @@ int		init_rotation_tabs(t_tetrimino *tmino)
   int		max;
   int		i;
 
-  max = (tmino->width > tmino->height) ? tmino->width : tmino->height;
+  max = tmino->size_max;
   if (!(tmino->tmino_aff = malloc(sizeof(int *) * (max + 1))) ||
       !(tmino->tmino_rot = malloc(sizeof(int *) * (max + 1))))
     return (1);
@@ -63,6 +63,5 @@ int		init_rotation_tabs(t_tetrimino *tmino)
       my_bzero(tmino->tmino_rot[i], sizeof(int) * (max + 1));
       i += 1;
     }
-  copy_rotation_tabs(tmino);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Mar  1 13:33:50 2016 marc brout
-** Last update Thu Mar 17 11:49:38 2016 marc brout
+** Last update Fri Mar 18 11:18:37 2016 marc brout
 */
 
 #include "program.h"
@@ -47,7 +47,7 @@ void			tri_tetriminos(t_tetrimino *root)
     }
 }
 
-int		purify_tetriminos(t_tetrimino *root)
+int		purify_tetriminos(t_tetrimino *root, t_program *tetris)
 {
   int		nb;
   t_tetrimino	*tmp;
@@ -58,7 +58,8 @@ int		purify_tetriminos(t_tetrimino *root)
   nb = 0;
   while (tmp)
     {
-      if (!tmp->working)
+      if (!tmp->working || tmp->width > tetris->start.col ||
+	  tmp->height > tetris->start.row)
 	{
 	  nb += 1;
 	  prev->next = tmp->next;
