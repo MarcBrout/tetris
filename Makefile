@@ -1,11 +1,11 @@
 ##
-1;2802;0c## Makefile for Makefile in /home/duhieu_b/System_unix/PSU_2015_tetris
+## Makefile for Makefile in /home/duhieu_b/System_unix/PSU_2015_tetris
 ## 
 ## Made by benjamin duhieu
 ## Login   <duhieu_b@epitech.net>
 ## 
 ## Started on  Thu Mar  3 10:29:38 2016 benjamin duhieu
-## Last update Fri Mar 18 21:28:37 2016 marc brout
+## Last update Sat Mar 19 00:21:23 2016 marc brout
 ##
 
 SRCD		=	disp/
