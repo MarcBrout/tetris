@@ -5,13 +5,9 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:00:12 2016 benjamin duhieu
-** Last update Fri Mar 18 16:16:34 2016 benjamin duhieu
+** Last update Fri Mar 18 16:41:05 2016 marc brout
 */
 
-#include <ncurses.h>
-#include <curses.h>
-#include <unistd.h>
-#include "my.h"
 #include "program.h"
 
 int	key_right(t_program *tetris, t_tetrimino *tet)

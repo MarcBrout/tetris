@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 15:38:41 2016 marc brout
+** Last update Fri Mar 18 16:44:10 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -19,8 +19,8 @@
 
 # define UNUSED __attribute__((__unused__))
 # define USAGE
-# define FOLDER_MISSING "\"./tetriminos\" folder missing or protected.\n"
-# define FOLDER_EMPTY "\"./tetriminos\" containing no working tetrimino.\n"
+# define FOLDER_MISSING "\"./tetriminos\" missing or protected.\n"
+# define FOLDER_EMPTY "\"./tetriminos\" has no working tetrimino.\n"
 # define MALLOC_ERR "Memory allocation error, program aborted.\n"
 # define FILE_ERR "Error while opening tetrimino file\n."
 
@@ -63,7 +63,7 @@ typedef struct		s_tetrimino
   struct s_tetrimino	*next;
 }			t_tetrimino;
 
-typedef int (*t_func)(t_start *, char **, int *, char);
+typedef int		(*t_func)(t_start *, char **, int *, char);
 
 typedef struct		s_args
 {
@@ -218,6 +218,8 @@ int	create_win(t_program *, t_tet *, int, int);
 ** tab_game.c
 */
 
+void	padding_tab(t_program *tet, int **tab);
+void	padding_next(int **tab, int ymax, int xmax);
 int	malloc_game(t_program *, t_tet *);
 int	malloc_next(t_tet *, int, int);
 
@@ -232,7 +234,6 @@ int	disp(t_program *, int, int);
 ** aff_score.c
 */
 
-void	padding_tab(t_program *, int **);
 void	score(t_program *, t_tet *);
 void	size_file(t_tet *, int, int);
 
@@ -318,5 +319,44 @@ void	init_high_scores(t_program *tetris);
 int	load_high_scores(t_program *tetris);
 void	my_putnbr_tofd(int nb, int fd);
 int	save_high_scores(t_program *tetris);
+
+/*
+** verif.c
+*/
+
+int	init_game(t_program *tetris, int x_max, int y_max, time_t init);
+int	chk_window(t_program *tetris);
+
+/*
+** rand_next.c
+*/
+
+void	my_random_first(t_program *tetris);
+void	my_random_cur(t_program *tetris);
+int	first_piece(t_program *tetris);
+int	other_piece(t_program *tetris);
+
+/*
+** piece.c
+*/
+
+void	init_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit);
+int	move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit);
+
+/*
+** key_function_next.c
+*/
+
+int	key_quit(t_program *tetris, t_tetrimino *tet);
+
+/*
+** key_function.c
+*/
+
+int	key_right(t_program *tetris, t_tetrimino *tet);
+int	key_left(t_program *tetris, t_tetrimino *tet);
+int	key_drop(t_program *tetris, t_tetrimino *tet);
+int	key_pause(t_program *tetris, t_tetrimino *tet);
+int	key_turn(t_program *tetris, t_tetrimino *tet);
 
 #endif /* !PROGRAM_H_ */

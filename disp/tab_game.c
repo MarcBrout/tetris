@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:42:55 2016 benjamin duhieu
-** Last update Thu Mar 17 21:49:50 2016 benjamin duhieu
+** Last update Fri Mar 18 16:38:10 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -81,7 +81,8 @@ int	malloc_next(t_tet *tetris, int xmax, int ymax)
   i = -1;
   while (++i < ymax + 2)
     {
-      if ((tetris->game.next[i] = malloc(sizeof(int) * (xmax + 3))) == NULL)
+      if ((tetris->game.next[i] = malloc(sizeof(int) * (xmax + 3)))
+	  == NULL)
 	return (1);
       tetris->game.next[i][xmax + 2] = -1;
     }

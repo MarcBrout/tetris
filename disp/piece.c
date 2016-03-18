@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:14:34 2016 benjamin duhieu
-** Last update Fri Mar 18 16:16:15 2016 benjamin duhieu
+** Last update Fri Mar 18 16:42:37 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -34,7 +34,8 @@ int	move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
 	{
 	  if (tet->tmino_aff[i][j])
 	    if (posit->y + i > tetris->start.row
-		|| (posit->x + j < 1 || posit->x + j > tetris->start.col) ||
+		|| (posit->x + j < 1 ||
+		    posit->x + j > tetris->start.col) ||
 		tetris->tet.game.board[posit->y + i][posit->x + j] > 0)
 	      return (1);
 	}

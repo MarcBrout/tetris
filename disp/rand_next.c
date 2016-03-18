@@ -5,13 +5,10 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:20:05 2016 benjamin duhieu
-** Last update Fri Mar 18 16:21:17 2016 benjamin duhieu
+** Last update Fri Mar 18 16:42:32 2016 marc brout
 */
 
-#include <ncurses.h>
-#include <curses.h>
 #include "program.h"
-#include "my.h"
 
 void		my_random_first(t_program *tetris)
 {
