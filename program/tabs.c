@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Fri Mar 18 13:49:59 2016 marc brout
+** Last update Fri Mar 18 17:10:13 2016 marc brout
 */
 
 #include <stdio.h>
@@ -76,7 +76,8 @@ int			fill_line(const char *str, int *line,
   return (0);
 }
 
-int			check_empty_col(int **tab, int width, int height)
+int			check_empty_col(int **tab, int width,
+					int height)
 {
   int			x;
   int			y;

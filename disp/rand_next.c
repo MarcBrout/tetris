@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:20:05 2016 benjamin duhieu
-** Last update Fri Mar 18 16:42:32 2016 marc brout
+** Last update Fri Mar 18 18:11:54 2016 marc brout
 */
 
 #include "program.h"
@@ -52,9 +52,9 @@ int		first_piece(t_program *tetris)
 int		other_piece(t_program *tetris)
 {
   erase_next(tetris);
-  free(tetris->first);
-  if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL)
-    return (1);
+  /* free(tetris->first); */
+  /* if ((tetris->first = malloc(sizeof(t_tetrimino))) == NULL) */
+  /*   return (1); */
   tetris->first = tetris->cur;
   tetris->first->rot = 0;
   my_random_cur(tetris);

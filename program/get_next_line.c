@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Jan  4 10:27:46 2016 marc brout
-** Last update Wed Mar 16 19:53:46 2016 marc brout
+** Last update Fri Mar 18 17:10:14 2016 marc brout
 */
 
 #include <stdio.h>
@@ -58,12 +58,13 @@ char		*get_next_line(const int fd)
 
   str = NULL;
   if ((((fd < 0) || (j = -1) > 0 || READ_SIZE < 1 ||
-	!(str = get_last_buff(buf, &r, &i, &j)) || buf[i] == 10)) && buf[i])
+	!(str = get_last_buff(buf, &r, &i, &j)) ||
+	buf[i] == 10)) && buf[i])
     return (str);
   size = j + 1;
-  while (buf[i] != 10 && (r = read(fd, buf, READ_SIZE)) > 0 && (size += r))
+  while (buf[i] != 10 && (r = read(fd, buf, READ_SIZE)) > 0 &&
+	 (size += r) && !(buf[r] = 0))
     {
-      buf[r] = 0;
       if ((str = my_realloc(str, size)) == NULL)
 	return (NULL);
       i = -1;

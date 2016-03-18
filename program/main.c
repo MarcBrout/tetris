@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 benjamin duhieu
-** Last update Fri Mar 18 15:37:10 2016 marc brout
+** Last update Fri Mar 18 17:10:14 2016 marc brout
 */
 
 #include <curses.h>
@@ -66,7 +66,8 @@ int		show_start(t_start *start, t_program *prog)
   put_visible_str(start->keys[K_QUIT]);
   my_printf("\nKey Pause : ");
   put_visible_str(start->keys[K_PAUSE]);
-  (start->hide) ? my_printf("\nNext : Yes\n") : my_printf("\nNext : No\n");
+  (start->hide) ? my_printf("\nNext : Yes\n") :
+    my_printf("\nNext : No\n");
   my_printf("Level : %d\n", start->level);
   my_printf("Size : %d*%d\n", start->row, start->col);
   debug_tetriminos_list(prog->tminos, prog->nb_tminos);

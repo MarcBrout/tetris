@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar  3 13:15:17 2016 marc brout
-** Last update Fri Mar 18 15:43:59 2016 marc brout
+** Last update Fri Mar 18 17:05:04 2016 marc brout
 */
 
 #include "program.h"
@@ -66,7 +66,8 @@ void		display_help(char **av)
   my_printf("-kt --key-turn={K} Turn tetrimino with key K\n");
   my_printf("-kd --key-drop={K} Set default DROP on key K\n");
   my_printf("-kq --key-quit={K} Quit Program when press key K\n");
-  my_printf("-kp --key-pause={K} Pause and restart game  when press key K\n");
+  my_printf("-kp --key-pause={K} Pause and restart game  when press key\
+ K\n");
   my_printf("--map-size={row,col} Set game size at row, col\n");
   my_printf("-w --without-next Hide next tetrimino\n");
   my_printf("-d --debug Debug mode\n");

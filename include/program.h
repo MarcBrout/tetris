@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 19:13:35 2016 benjamin duhieu
+** Last update Fri Mar 18 19:28:12 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -96,7 +96,6 @@ typedef struct		s_program
   struct termios        oldt;
   struct termios	newt;
 }			t_program;
-
 
 /*
 ** get_max_key_len.c
@@ -266,7 +265,6 @@ int	line_completed(t_program *, t_tetrimino *, t_pos *);
 void	init_tab(int (*key_tab[6])(t_program *, t_tetrimino *));
 void	new_tab(int **, int);
 void	put_to_board(t_program *, t_tetrimino *, t_pos *);
-
 
 /*
 ** game_over.c

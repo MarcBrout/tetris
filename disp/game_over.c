@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar 17 17:46:29 2016 benjamin duhieu
-** Last update Fri Mar 18 16:18:12 2016 benjamin duhieu
+** Last update Fri Mar 18 17:43:43 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -34,8 +34,8 @@ void	put_score(t_program *tetris, char *str, int x, int y)
   int	count;
   int	i;
 
-  count = 8 - my_strlen(str);
-  x += my_strlen(str) + 1;
+  count = (str) ? 8 - my_strlen(str) : 8;
+  x += (str) ? my_strlen(str) + 1 : 1;
   i = -1;
   while (++i < count)
     mvwprintw(tetris->tet.over.game, y, x + i, " ");

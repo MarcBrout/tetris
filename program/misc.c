@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:43:44 2016 marc brout
-** Last update Mon Feb 29 18:30:49 2016 marc brout
+** Last update Fri Mar 18 17:10:14 2016 marc brout
 */
 
 #include <stdlib.h>
@@ -57,7 +57,8 @@ char	*my_strcatcst(const char *str1, const char *str2)
 
   if (!str1 || !str2)
     return (NULL);
-  if ((res = malloc(my_strlencst(str1) + my_strlencst(str2) + 1)) == NULL)
+  if ((res = malloc(my_strlencst(str1) + my_strlencst(str2) + 1))
+      == NULL)
     return (NULL);
   i = -1;
   j = -1;

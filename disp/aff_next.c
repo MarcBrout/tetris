@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Fri Mar 18 16:20:23 2016 benjamin duhieu
+** Last update Fri Mar 18 17:16:54 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -41,7 +41,7 @@ void	put_to_next(t_program *tetris, t_tetrimino *next)
   int	j;
   t_pos	posit;
 
-  if (!tetris->start.hide)
+  if (tetris->start.hide)
     {
       i = -1;
       posit.x = (tetris->tet.next.x_max / 2) - (next->width / 2);

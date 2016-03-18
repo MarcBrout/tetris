@@ -1,13 +1,14 @@
 /*
-** replace_high_scores.c for tetris in ~/RENDU/PSU/PSU_2015_tetris/program
+** replace_high_scores.c for tetris in ~/PSU/PSU_2015_tetris/program
 **
 ** Made by marc brout
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:45:37 2016 marc brout
-** Last update Thu Mar 17 19:02:28 2016 marc brout
+** Last update Fri Mar 18 18:09:23 2016 marc brout
 */
 
+#include <stdio.h>
 #include "program.h"
 
 int	is_high_score(t_program *tetris, int score)

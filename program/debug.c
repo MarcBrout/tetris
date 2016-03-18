@@ -5,14 +5,15 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Fri Feb 26 17:19:32 2016 marc brout
-** Last update Wed Mar 16 10:17:36 2016 marc brout
+** Last update Fri Mar 18 17:10:14 2016 marc brout
 */
 
 #include <unistd.h>
 #include "program.h"
 #include "my.h"
 
-void		debug_tetriminos_list(t_tetrimino *tminos, int nb_tminos)
+void		debug_tetriminos_list(t_tetrimino *tminos,
+				      int nb_tminos)
 {
   int		i;
   t_tetrimino	*tmp;
