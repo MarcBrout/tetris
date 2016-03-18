@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Feb 25 16:57:52 2016 benjamin duhieu
-** Last update Fri Mar 18 21:24:58 2016 marc brout
+** Last update Sat Mar 19 00:53:42 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -37,6 +37,16 @@ int		game_over(t_program *tetris, int y)
   return (0);
 }
 
+void		init_tet_play(t_program *t)
+{
+  t->tet.play.high_score = t->hscore[0].score;
+  t->tet.play.score = 0;
+  t->tet.play.line = 0;
+  t->tet.play.level = t->start.level;
+  t->tet.play.sec = 0;
+  t->tet.play.min = 0;
+}
+
 int		my_disp(t_program *t)
 {
   int		x_max;
@@ -44,18 +54,15 @@ int		my_disp(t_program *t)
 
   srand(time(NULL));
   my_printf("\nEnter your name (6 characters max): ");
-  while ((!(t->start.name = get_next_line(0)) ||
-	  (my_strlen(t->start.name) > 6) || !t->start.name[0]))
+  if ((!(t->start.name = get_next_line(0)) ||
+       (my_strlen(t->start.name) > 6) || !t->start.name[0]))
     {
-      my_printf(SNAME, t->start.name[0]);
-      my_printf("Please Enter a valid name (6 characters max): ");
+      if (t->start.name)
+	free(t->start.name);
+      if (!(t->start.name = my_strdup("NONAME")))
+	return (1);;
     }
-  t->tet.play.high_score = t->hscore[0].score;
-  t->tet.play.score = 0;
-  t->tet.play.line = 0;
-  t->tet.play.level = t->start.level;
-  t->tet.play.sec = 0;
-  t->tet.play.min = 0;
+  init_tet_play(t);
   x_max = max_wtetriminos(t->tminos);
   y_max = max_htetriminos(t->tminos);
   if (disp(t, x_max, y_max))
