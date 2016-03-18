@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 17:45:37 2016 marc brout
-** Last update Fri Mar 18 18:09:23 2016 marc brout
+** Last update Fri Mar 18 20:59:32 2016 marc brout
 */
 
 #include <stdio.h>
@@ -32,7 +32,7 @@ void	replace_high_scores(t_program *tetris,
   int	pos;
   int	i;
 
-  if ((pos = is_high_score(tetris, score)) > 0)
+  if ((pos = is_high_score(tetris, score)) >= 0)
     {
       i = 9;
       if (tetris->hscore[9].name)
@@ -46,4 +46,6 @@ void	replace_high_scores(t_program *tetris,
       tetris->hscore[pos].name = name;
       tetris->hscore[pos].score = score;
     }
+  else
+    free(name);
 }

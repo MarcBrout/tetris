@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 19:28:12 2016 benjamin duhieu
+** Last update Fri Mar 18 21:24:41 2016 marc brout
 */
 
 #ifndef PROGRAM_H_
@@ -22,7 +22,8 @@
 # define FOLDER_MISSING "\"./tetriminos\" missing or protected.\n"
 # define FOLDER_EMPTY "\"./tetriminos\" has no working tetrimino.\n"
 # define MALLOC_ERR "Memory allocation error, program aborted.\n"
-# define FILE_ERR "Error while opening tetrimino file\n."
+# define FILE_ERR "Error while opening tetrimino file.\n"
+# define SNAME "starts name : %d\nInvalid Login ...\n"
 
 typedef enum		e_keys
   {
@@ -270,7 +271,7 @@ void	put_to_board(t_program *, t_tetrimino *, t_pos *);
 ** game_over.c
 */
 
-void	tab_score(t_program * );
+void	tab_score(t_program *);
 void	put_score(t_program *, char *, int, int);
 void	size_over(t_program *, int, int, int);
 

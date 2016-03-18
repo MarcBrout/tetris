@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Tue Mar  1 13:33:50 2016 marc brout
-** Last update Fri Mar 18 17:07:59 2016 marc brout
+** Last update Fri Mar 18 20:42:25 2016 marc brout
 */
 
 #include "program.h"
@@ -70,7 +70,7 @@ int		purify_tetriminos(t_tetrimino *root,
 	  free(tmp);
 	  tmp = prev;
 	}
-      if (tmp != root && init_rotation_tabs(tmp))
+      else if (tmp != root && init_rotation_tabs(tmp))
 	return (-1);
       prev = tmp;
       tmp = tmp->next;

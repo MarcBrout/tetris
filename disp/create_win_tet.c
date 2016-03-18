@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:37:03 2016 benjamin duhieu
-** Last update Fri Mar 18 15:57:24 2016 benjamin duhieu
+** Last update Fri Mar 18 21:22:03 2016 marc brout
 */
 
 #include <curses.h>
@@ -45,23 +45,27 @@ int		max_htetriminos(t_tetrimino *tet)
   return (height);
 }
 
-int		create_win(t_program *tet, t_tet *tetris, int xmax, int ymax)
+int		create_win(t_program *tet, t_tet *tetris,
+			   int xmax, int ymax)
 {
   getmaxyx(stdscr, tetris->height, tetris->width);
   tetris->board.x_max = tet->start.col + 2;
   tetris->board.y_max = tet->start.row + 2;
-  if ((tetris->board.game = newwin(tetris->board.y_max, tetris->board.x_max,
-  				   1, 30)) == NULL)
+  if ((tetris->board.game = newwin(tetris->board.y_max,
+				   tetris->board.x_max, 1, 30)) == NULL)
     return (my_puterror("Error : Can't create the board window\n", 1));
   tetris->score.x_max = 20;
   tetris->score.y_max = 12;
-  if ((tetris->score.game = newwin(tetris->score.y_max, tetris->score.x_max,
-				   8, 1)) == NULL)
+  if ((tetris->score.game = newwin(tetris->score.y_max,
+				   tetris->score.x_max, 8, 1)) == NULL)
     return (my_puterror("Error : Can't create the score window\n", 1));
   tetris->next.x_max = xmax + 2;
   tetris->next.y_max = ymax + 2;
-  if ((tetris->next.game = newwin(tetris->next.y_max, tetris->next.x_max,
-				  1, 30 + tetris->board.x_max + 5)) == NULL)
-    return (my_puterror("Error : Can't create the next tetrimino window\n", 1));
+  if ((tetris->next.game = newwin(tetris->next.y_max,
+				  tetris->next.x_max, 1,
+				  30 + tetris->board.x_max + 5))
+      == NULL)
+    return (my_puterror("Error : Can't create the next tetrimino \
+window\n", 1));
   return (0);
 }

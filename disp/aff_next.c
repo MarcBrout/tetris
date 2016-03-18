@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 18:16:41 2016 benjamin duhieu
-** Last update Fri Mar 18 17:16:54 2016 marc brout
+** Last update Fri Mar 18 21:17:06 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -23,13 +23,16 @@ void	aff_next(t_program *tetris)
   while (tetris->tet.game.next && tetris->tet.game.next[++i])
     {
       j = 0;
-      while (tetris->tet.game.next[i] && tetris->tet.game.next[i][++j] != -1)
+      while (tetris->tet.game.next[i] &&
+	     tetris->tet.game.next[i][++j] != -1)
 	{
 	  if (tetris->tet.game.next[i][j] > 0)
 	    {
-	      wattron(tetris->tet.next.game, COLOR_PAIR(tetris->tet.game.next[i][j]));
+	      wattron(tetris->tet.next.game,
+		      COLOR_PAIR(tetris->tet.game.next[i][j]));
 	      mvwprintw(tetris->tet.next.game, i, j, "*");
-	      wattroff(tetris->tet.next.game, COLOR_PAIR(tetris->tet.game.next[i][j]));
+	      wattroff(tetris->tet.next.game,
+		       COLOR_PAIR(tetris->tet.game.next[i][j]));
 	    }
 	}
     }
@@ -52,7 +55,8 @@ void	put_to_next(t_program *tetris, t_tetrimino *next)
 	  while (++j < next->width)
 	    {
 	      if (next->tmino[i][j])
-		tetris->tet.game.next[i + posit.y][j + posit.x] = next->color;
+		tetris->tet.game.next[i + posit.y][j + posit.x] =
+		  next->color;
 	      else
 		tetris->tet.game.next[i + posit.y][j + posit.x] = 0;
 	    }
@@ -75,31 +79,31 @@ void	erase_next(t_program *tetris)
     }
 }
 
-t_tetrimino	*next_form(t_program *tetris, int *next)
+t_tetrimino	*next_form(t_program *tet, int *next)
 {
   static bool	bol = false;
 
-  werase(tetris->tet.next.game);
-  wborder(tetris->tet.next.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
-  mvwprintw(tetris->tet.next.game, 0, 1, "NEXT");
+  werase(tet->tet.next.game);
+  wborder(tet->tet.next.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
+  mvwprintw(tet->tet.next.game, 0, 1, "NEXT");
   if (!bol)
     {
       if (*next == -1)
 	{
-	  if (first_piece(tetris))
+	  if (first_piece(tet))
 	    return (NULL);
 	}
       else if (*next == 0)
 	bol = true;
       if (!bol)
-	return (put_to_next(tetris, tetris->cur), tetris->first);
+	return (put_to_next(tet, tet->cur), tet->first);
     }
   if (bol)
     {
       if (!*next)
-	if ((other_piece(tetris)))
+	if ((other_piece(tet)))
 	  return (NULL);
-      put_to_next(tetris, tetris->cur);
+      put_to_next(tet, tet->cur);
     }
-  return (tetris->first);
+  return (tet->first);
 }

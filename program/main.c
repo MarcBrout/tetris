@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Feb 26 16:23:36 2016 benjamin duhieu
-** Last update Fri Mar 18 17:10:14 2016 marc brout
+** Last update Fri Mar 18 20:59:47 2016 marc brout
 */
 
 #include <curses.h>
@@ -94,6 +94,8 @@ int		launch_tetris(t_program *prog)
   if (!(prog->start.key = malloc(prog->start.maxl + 1)) ||
       prog->nb_tminos <= 0 || my_disp(prog) || save_high_scores(prog))
     return (1);
+  free_tab(prog->tet.game.board, prog->start.row + 2);
+  free_tab(prog->tet.game.next, max_htetriminos(prog->tminos) + 2);
   free_keys(prog);
   free_high_score(prog);
   free_list(prog->tminos);

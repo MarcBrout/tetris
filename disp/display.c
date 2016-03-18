@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:12:17 2016 benjamin duhieu
-** Last update Fri Mar 18 19:21:54 2016 benjamin duhieu
+** Last update Fri Mar 18 21:13:12 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -37,7 +37,8 @@ void		display_to_board(t_program *tetris)
     }
 }
 
-void	display_move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
+void	display_move_piece(t_program *tetris,
+			   t_tetrimino *tet, t_pos *posit)
 {
   int	i;
   int	j;
@@ -52,7 +53,8 @@ void	display_move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
 	    {
 	      wattron(tetris->tet.board.game,
 		      COLOR_PAIR(tet->tmino_aff[i][j]));
-	      mvwprintw(tetris->tet.board.game, posit->y + i, posit->x + j, "*");
+	      mvwprintw(tetris->tet.board.game, posit->y + i,
+			posit->x + j, "*");
 	      wattroff(tetris->tet.board.game,
 		       COLOR_PAIR(tet->tmino_aff[i][j]));
 	    }
@@ -64,8 +66,10 @@ int	display_piece(t_program *tetris, t_tetrimino *tet, int i)
 {
   int	loop;
 
-  if ((tetris->speed - tetris->start.level) >= 2)
-    loop = tetris->speed - tetris->start.level;
+  if ((tetris->speed - tetris->tet.play.level) >= 2)
+    loop = tetris->speed - tetris->tet.play.level;
+  else
+    loop = 3;
   if (move_piece(tetris, tet, &tetris->posit))
     {
       tetris->posit.y--;

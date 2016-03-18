@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:41:16 2016 benjamin duhieu
-** Last update Fri Mar 18 16:11:59 2016 benjamin duhieu
+** Last update Fri Mar 18 21:18:15 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -29,7 +29,7 @@ void	size_file(t_tet *tetris, int nbr, int place)
   mvwprintw(tetris->score.game, place, 13 + i, "%d", nbr);
 }
 
-void	score(t_program *tet, t_tet *tetris)
+void	score(t_program *t, t_tet *tetris)
 {
   werase(tetris->score.game);
   wborder(tetris->score.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
@@ -46,8 +46,7 @@ void	score(t_program *tet, t_tet *tetris)
   size_file(tetris, tetris->play.level, 6);
   mvwprintw(tetris->score.game, 8, 13, "%02d:", tetris->play.min);
   mvwprintw(tetris->score.game, 8, 16, "%02d", tetris->play.sec);
-
-  mvwprintw(tetris->score.game, 10, 2, "Player:    %s", tet->start.name);
+  mvwprintw(tetris->score.game, 10, 2, "Player:    %s", t->start.name);
 }
 
 void		change_score(t_program *tetris,

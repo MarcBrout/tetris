@@ -5,11 +5,12 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Feb 29 20:21:56 2016 marc brout
-** Last update Thu Mar 17 16:44:25 2016 marc brout
+** Last update Fri Mar 18 20:53:38 2016 marc brout
 */
 
 #include	<stdlib.h>
 #include	"program.h"
+#include	"my.h"
 
 void		free_keys(t_program *tetris)
 {
@@ -22,6 +23,7 @@ void		free_keys(t_program *tetris)
 	free(tetris->start.keys[i]);
       i = i + 1;
     }
+  free(tetris->start.key);
   free(tetris->start.keys);
 }
 
@@ -45,8 +47,7 @@ void		free_high_score(t_program *tetris)
   i = 0;
   while (i < 10)
     {
-      if (tetris->hscore[i].name)
-	free(tetris->hscore[i].name);
+      free(tetris->hscore[i].name);
       i += 1;
     }
 }
@@ -63,7 +64,6 @@ void		free_rot_tab(int **rot_tab, int w, int h)
       free(rot_tab[i]);
       i += 1;
     }
-  free(rot_tab);
 }
 
 void		free_list(t_tetrimino *root)
@@ -71,8 +71,8 @@ void		free_list(t_tetrimino *root)
   t_tetrimino	*tmp;
   t_tetrimino	*tmp2;
 
-  tmp2 = root->next;
-  while ((tmp = tmp2))
+  tmp = root->next;
+  while (tmp)
     {
       tmp2 = tmp->next;
       if (tmp->name)
@@ -80,7 +80,10 @@ void		free_list(t_tetrimino *root)
       free_tab(tmp->tmino, tmp->height);
       free_rot_tab(tmp->tmino_aff, tmp->width, tmp->height);
       free_rot_tab(tmp->tmino_rot, tmp->width, tmp->height);
+      free(tmp->tmino_rot);
+      free(tmp->tmino_aff);
       free(tmp);
+      tmp = tmp2;
     }
   free(root);
 }

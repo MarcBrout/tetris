@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Mar 17 11:04:39 2016 marc brout
-** Last update Fri Mar 18 17:58:21 2016 marc brout
+** Last update Fri Mar 18 20:47:04 2016 marc brout
 */
 
 #include <sys/types.h>
@@ -69,8 +69,10 @@ int		load_high_scores(t_program *tetris)
   i = 0;
   while (i < 10)
     {
-      if (!(tetris->hscore[i].name = get_next_line(fd)))
+      if (!(str = get_next_line(fd)))
 	break;
+      free(tetris->hscore[i].name);
+      tetris->hscore[i].name = str;
       if (!(str = get_next_line(fd)))
 	break;
       tetris->hscore[i].score = my_getnbrcst((const char *)str);

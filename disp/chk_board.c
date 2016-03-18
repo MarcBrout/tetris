@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:13:52 2016 benjamin duhieu
-** Last update Fri Mar 18 18:25:38 2016 marc brout
+** Last update Fri Mar 18 21:20:49 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -14,7 +14,8 @@
 #include "my.h"
 #include "program.h"
 
-int	line_completed(t_program *tetris, t_tetrimino *tet, t_pos *posit)
+int	line_completed(t_program *tetris, t_tetrimino *tet,
+		       t_pos *posit)
 {
   int	i;
   int	j;
@@ -54,7 +55,8 @@ void	put_to_board(t_program *tetris, t_tetrimino *tet, t_pos *posit)
       while (++j < tet->size_max)
 	{
 	  if (tet->tmino_aff[i][j])
-	    tetris->tet.game.board[posit->y + i][posit->x + j] = tet->tmino_aff[i][j];
+	    tetris->tet.game.board[posit->y + i][posit->x + j] =
+	      tet->tmino_aff[i][j];
 	}
     }
 }

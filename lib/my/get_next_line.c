@@ -5,9 +5,10 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Mon Jan  4 10:27:46 2016 marc brout
-** Last update Sat Mar  5 18:51:18 2016 marc brout
+** Last update Fri Mar 18 20:52:37 2016 marc brout
 */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 char		*my_realloc(char *str, int size)
@@ -18,12 +19,12 @@ char		*my_realloc(char *str, int size)
   if ((tmp = malloc(size + 1)) == NULL)
     return (NULL);
   i = -1;
-  while (str[++i] && i < size)
+  while (str && str[++i] &&  i < size)
     tmp[i] = str[i];
   while (i <= size)
     tmp[i++] = 0;
   if (str != NULL)
-    free(str);
+    free (str);
   return (tmp);
 }
 
@@ -32,8 +33,13 @@ char		*get_last_buff(char *buff, int *ret, int *i, int *j)
   int		size;
   char		*str;
 
-  if ((str = malloc(1)) == NULL || *ret == 0)
+  if ((str = malloc(1)) == NULL)
     return (NULL);
+  if (*ret == 0)
+    {
+      free(str);
+      return (NULL);
+    }
   str[0] = 0;
   size = 0;
   if (*i < READ_SIZE && *i != -1)
@@ -56,13 +62,14 @@ char		*get_next_line(const int fd)
   int		j;
 
   str = NULL;
-  if (((fd < 0) || (j = -1) > 0 || READ_SIZE < 1 ||
-       (str = get_last_buff(buf, &r, &i, &j)) == NULL || buf[i] == 10))
+  if ((((fd < 0) || (j = -1) > 0 || READ_SIZE < 1 ||
+	!(str = get_last_buff(buf, &r, &i, &j)) ||
+	buf[i] == 10)) && buf[i])
     return (str);
   size = j + 1;
-  while (buf[i] != 10 && (r = read(fd, buf, READ_SIZE)) > 0 && (size += r))
+  while (buf[i] != 10 && (r = read(fd, buf, READ_SIZE)) > 0 &&
+	 (size += r) && !(buf[r] = 0))
     {
-      buf[r] = 0;
       if ((str = my_realloc(str, size)) == NULL)
 	return (NULL);
       i = -1;

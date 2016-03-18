@@ -1,11 +1,11 @@
 /*
-** aff_tetris.c for aff in /home/duhieu_b/System_unix/PSU_2015_tetris/disp
+** aff_tetris.c for aff in ~/System_unix/PSU_2015_tetris/disp
 **
 ** Made by benjamin duhieu
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:40:05 2016 benjamin duhieu
-** Last update Thu Mar 17 16:39:25 2016 benjamin duhieu
+** Last update Fri Mar 18 21:20:51 2016 marc brout
 */
 
 #include <ncurses.h>

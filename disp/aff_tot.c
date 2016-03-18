@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Fri Mar 18 19:28:45 2016 benjamin duhieu
+** Last update Fri Mar 18 21:20:23 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -16,35 +16,34 @@
 #include "program.h"
 #include "my.h"
 
-int	game(t_program *tetris, t_tetrimino *tet, int i)
+int	game(t_program *tetr, t_tetrimino *tet, int i)
 {
   int	(*key_tab[6])(t_program *, t_tetrimino *);
   int	recup;
   char	*touch;
 
-  werase(tetris->tet.board.game);
-  wborder(tetris->tet.board.game, '|', '|', '-', '-', '-', '-', '-','-');
+  werase(tetr->tet.board.game);
+  wborder(tetr->tet.board.game, '|', '|', '-', '-', '-', '-', '-', '-');
   init_tab(key_tab);
-  if (!tetris->piece)
+  if (!tetr->piece)
     {
-      init_piece(tetris, tet, &tetris->posit);
-      display_to_board(tetris);
+      init_piece(tetr, tet, &tetr->posit);
+      display_to_board(tetr);
     }
-  else if (tetris->piece == 1)
+  else if (tetr->piece == 1)
     {
       set_piece(tet);
-      if ((touch = recup_entry(tetris)))
-	if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
-	  if (key_tab[recup](tetris, tet))
+      if ((touch = recup_entry(tetr)))
+	if ((recup = is_it_a_key(tetr->start.keys, touch)) >= 0)
+	  if (key_tab[recup](tetr, tet))
 	    return (-1);
-      if ((recup = display_piece(tetris, tet, i)) == -1)
+      if ((recup = display_piece(tetr, tet, i)) == -1)
       	return (-1);
       if (recup > 0)
       	return (1);
     }
   return (0);
 }
-
 
 int		draw(t_program *tetris, time_t init, int i)
 {
@@ -69,23 +68,25 @@ int		draw(t_program *tetris, time_t init, int i)
   return (0);
 }
 
-int		the_game(t_program *tetris, time_t init, int y, int i)
+int		the_game(t_program *tet, time_t init, int y, int i)
 {
   int		chk;
 
-  if ((chk = draw(tetris, init, i)) == -1)
+  if ((chk = draw(tet, init, i)) == -1)
     return (1);
   if (chk > 0)
     {
       clear();
-      replace_high_scores(tetris, tetris->start.name, tetris->tet.play.score);
-      tetris->tet.over.x_max = 20;
-      tetris->tet.over.y_max = 12;
-      if ((tetris->tet.over.game =
-	   newwin(tetris->tet.over.y_max, tetris->tet.over.x_max, 8, 1)) == NULL)
-	return (my_puterror("Error : Can't create the game over window\n", 1));
-      while (!(game_over(tetris, y)));
-      reset_terminal_to_default(&tetris->oldt);
+      replace_high_scores(tet, tet->start.name, tet->tet.play.score);
+      tet->tet.over.x_max = 20;
+      tet->tet.over.y_max = 12;
+      if ((tet->tet.over.game =
+	   newwin(tet->tet.over.y_max, tet->tet.over.x_max, 8, 1))
+	  == NULL)
+	return (my_puterror("Error : Can't create the game \
+over window\n", 1));
+      while (!(game_over(tet, y)));
+      reset_terminal_to_default(&tet->oldt);
       endwin();
       return (-1);
     }

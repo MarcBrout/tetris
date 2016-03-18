@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 19:55:42 2016 marc brout
-** Last update Fri Mar 18 17:10:13 2016 marc brout
+** Last update Fri Mar 18 20:50:41 2016 marc brout
 */
 
 #include <stdio.h>
@@ -119,11 +119,10 @@ void			fill_tab(t_tetrimino *tm, int color, int fd)
       free(tmp);
     }
   if (tm->working)
+    tm->working = check_empty_col(tm->tmino, tm->width, tm->height);
+  while ((tmp = get_next_line(fd)))
     {
-      tm->working = check_empty_col(tm->tmino, tm->width, tm->height);
-      tm->working = check_empty_col(tm->tmino, tm->width, tm->height);
+      tm->working = 0;
+      free(tmp);
     }
-  if ((tmp = get_next_line(fd)))
-    tm->working = 0;
-  free(tmp);
 }

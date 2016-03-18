@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar 17 17:46:29 2016 benjamin duhieu
-** Last update Fri Mar 18 17:43:43 2016 marc brout
+** Last update Fri Mar 18 21:27:58 2016 marc brout
 */
 
 #include <ncurses.h>
@@ -49,12 +49,14 @@ void	tab_score(t_program *tetris)
   int	i;
 
   werase(tetris->tet.over.game);
-  wborder(tetris->tet.over.game, '|', '|', '-', '-', '/', '\\', '\\', '/');
+  wborder(tetris->tet.over.game,
+	  '|', '|', '-', '-', '/', '\\', '\\', '/');
   mvwprintw(tetris->tet.over.game, 0, 1, "HIGHSCORE");
   i = -1;
   while (++i < 10)
     {
-      mvwprintw(tetris->tet.over.game, i + 1, 2, "%s", tetris->hscore[i].name);
+      mvwprintw(tetris->tet.over.game, i + 1, 2, "%s",
+		tetris->hscore[i].name);
       put_score(tetris, tetris->hscore[i].name, 2, i + 1);
     }
 }
