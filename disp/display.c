@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Fri Mar 18 16:12:17 2016 benjamin duhieu
-** Last update Fri Mar 18 16:38:50 2016 benjamin duhieu
+** Last update Fri Mar 18 19:21:54 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -60,8 +60,12 @@ void	display_move_piece(t_program *tetris, t_tetrimino *tet, t_pos *posit)
     }
 }
 
-int	display_piece(t_program *tetris, t_tetrimino *tet)
+int	display_piece(t_program *tetris, t_tetrimino *tet, int i)
 {
+  int	loop;
+
+  if ((tetris->speed - tetris->start.level) >= 2)
+    loop = tetris->speed - tetris->start.level;
   if (move_piece(tetris, tet, &tetris->posit))
     {
       tetris->posit.y--;
@@ -77,7 +81,8 @@ int	display_piece(t_program *tetris, t_tetrimino *tet)
     {
       display_move_piece(tetris, tet, &tetris->posit);
       display_to_board(tetris);
-      tetris->posit.y++;
+      if (!(i % loop))
+	tetris->posit.y++;
     }
   return (0);
 }

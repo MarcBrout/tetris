@@ -5,7 +5,7 @@
 ** Login   <duhieu_b@epitech.net>
 **
 ** Started on  Thu Mar  3 10:44:16 2016 benjamin duhieu
-** Last update Fri Mar 18 16:19:10 2016 benjamin duhieu
+** Last update Fri Mar 18 19:21:32 2016 benjamin duhieu
 */
 
 #include <ncurses.h>
@@ -15,7 +15,7 @@
 #include "program.h"
 #include "my.h"
 
-int	game(t_program *tetris, t_tetrimino *tet)
+int	game(t_program *tetris, t_tetrimino *tet, int i)
 {
   int	(*key_tab[6])(t_program *, t_tetrimino *);
   int	recup;
@@ -36,7 +36,7 @@ int	game(t_program *tetris, t_tetrimino *tet)
 	if ((recup = is_it_a_key(tetris->start.keys, touch)) >= 0)
 	  if (key_tab[recup](tetris, tet))
 	    return (-1);
-      if ((recup = display_piece(tetris, tet)) == -1)
+      if ((recup = display_piece(tetris, tet, i)) == -1)
       	return (-1);
       if (recup > 0)
       	return (1);
@@ -45,7 +45,7 @@ int	game(t_program *tetris, t_tetrimino *tet)
 }
 
 
-int		draw(t_program *tetris, time_t init)
+int		draw(t_program *tetris, time_t init, int i)
 {
   time_t	new_time;
   t_tetrimino	*tmp;
@@ -60,7 +60,7 @@ int		draw(t_program *tetris, time_t init)
   else
     next = 1;
   wrefresh(tetris->tet.next.game);
-  if ((chk = game(tetris, tmp)) == -1)
+  if ((chk = game(tetris, tmp, i)) == -1)
     return (1);
   if (chk > 0)
     next = 0;
@@ -68,11 +68,11 @@ int		draw(t_program *tetris, time_t init)
   return (0);
 }
 
-int		the_game(t_program *tetris, time_t init, int y)
+int		the_game(t_program *tetris, time_t init, int y, int i)
 {
   int		chk;
 
-  if ((chk = draw(tetris, init)) == -1)
+  if ((chk = draw(tetris, init, i)) == -1)
     return (1);
   if (chk > 0)
     {
@@ -96,19 +96,23 @@ int		disp(t_program *tetris, int x_max, int y_max)
   time_t	init;
   int		chk;
   int		y;
+  int		i;
 
   init = 0;
+  tetris->speed = 15;
+  i = 0;
   if ((init = init_game(tetris, x_max, y_max, init)) == -1)
     return (1);
   while (1)
     {
       if ((y = chk_window(tetris)) == -1)
 	return (1);
-      if ((chk = the_game(tetris, init, y)) == -1)
+      if ((chk = the_game(tetris, init, y, i)) == -1)
 	return (0);
       if (chk > 0)
 	return (1);
-      usleep(1010000 - (50000 * tetris->tet.play.level));
+      i++;
+      usleep(500);
     }
   clear();
   reset_terminal_to_default(&tetris->oldt);

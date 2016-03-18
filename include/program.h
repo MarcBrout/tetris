@@ -5,7 +5,7 @@
 ** Login   <brout_m@epitech.net>
 **
 ** Started on  Thu Feb 25 17:29:28 2016 marc brout
-** Last update Fri Mar 18 17:08:12 2016 benjamin duhieu
+** Last update Fri Mar 18 19:13:35 2016 benjamin duhieu
 */
 
 #ifndef PROGRAM_H_
@@ -91,6 +91,7 @@ typedef struct		s_program
   time_t		pause;
   char			piece;
   t_pos			posit;
+  int			speed;
   int			nb_tminos;
   struct termios        oldt;
   struct termios	newt;
@@ -227,10 +228,10 @@ int	malloc_next(t_tet *, int, int);
 ** aff_tot.c
 */
 
-int	draw(t_program *, time_t);
-int	game(t_program *, t_tetrimino *);
+int	draw(t_program *, time_t, int);
+int	game(t_program *, t_tetrimino *, int);
 int	disp(t_program *, int, int);
-int	the_game(t_program *, time_t, int);
+int	the_game(t_program *, time_t, int, int);
 
 /*
 ** aff_score.c
@@ -288,7 +289,7 @@ int	my_disp(t_program *);
 
 void	display_to_board(t_program *);
 void	display_move_piece(t_program *, t_tetrimino *, t_pos *);
-int	display_piece(t_program *, t_tetrimino *);
+int	display_piece(t_program *, t_tetrimino *, int);
 
 /*
 ** option.c
